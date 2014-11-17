@@ -5,10 +5,10 @@ using System.Collections;
 public class PanelVariableRatioManager : MonoBehaviour {
 
 	public Animator targetButtonDropDown;
-	public InputField sessionTime;
+	public InputField executionTime;
 	public InputField order;
 
-	private string buttonSelected{
+	public string buttonSelected{
 		get {return buttonSelected;}
 		set {buttonSelected = value;}
 	}

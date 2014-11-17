@@ -6,7 +6,9 @@ public class UIManager : MonoBehaviour {
 	public Animator mainScreen;
 	public Animator modulesScreen;
 
-
+	void Start(){
+		//VariableRatioModule v = new VariableRatioModule ();
+	}
 
 	public void toggleMainScreen(){
 		mainScreen.enabled = true;

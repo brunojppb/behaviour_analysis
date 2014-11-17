@@ -18,6 +18,9 @@ public class SessionManager : MonoBehaviour {
 		//and setup each Module Object with its paramters
 		if (variableRatioManager.enabled) {
 			VariableRatioModule v = new VariableRatioModule();
+			v.executionTime = int.Parse(variableRatioManager.executionTime.text.ToString());
+			v.order = int.Parse(variableRatioManager.order.text.ToString());
+			v.targetButton = variableRatioManager.buttonSelected;
 			modules.Add(v);
 		}
 

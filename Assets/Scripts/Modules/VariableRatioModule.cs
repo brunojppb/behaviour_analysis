@@ -4,11 +4,12 @@ using System.Collections.Generic;
 public class VariableRatioModule : BaseModule {
 
 
-	private string targetButton{
+	public string targetButton{
 		get { return targetButton; }
 		set { targetButton = value; }
 	}
-	private int variableRatio{
+
+	public int variableRatio{
 		get { return variableRatio; }
 		set { variableRatio = value; }
 	}

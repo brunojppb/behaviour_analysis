@@ -8,6 +8,20 @@ using System;
 /// </summary>
 public abstract class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 
+	public BaseModule(){
+		this.buttonCount = new Dictionary<string, int> ();
+		this.buttonCount.Add ("blue", 0);
+		this.buttonCount.Add ("green", 0);
+		this.buttonCount.Add ("yellow", 0);
+		this.buttonCount.Add ("pink", 0);
+		this.buttonCount.Add ("black", 0);
+		this.buttonCount.Add ("red", 0);
+		this.buttonCount.Add ("purple", 0);
+		this.buttonCount.Add ("orange", 0);
+		this.buttonCount.Add ("white", 0);
+		Debug.Log("Base module Constructor...");
+	}
+
 	public int executionTime{
 		get { return executionTime; }
 		set { executionTime = value; }
