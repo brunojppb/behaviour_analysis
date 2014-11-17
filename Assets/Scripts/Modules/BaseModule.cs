@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 
@@ -6,40 +7,44 @@ using System;
 /// Base module.
 /// implement the interface IComparable to sort the elements
 /// </summary>
-public abstract class BaseModule : MonoBehaviour, IComparable<BaseModule>{
+public abstract class BaseModule : IComparable<BaseModule>{
 
-	public BaseModule(){
-		this.buttonCount = new Dictionary<string, int> ();
-		this.buttonCount.Add ("blue", 0);
-		this.buttonCount.Add ("green", 0);
-		this.buttonCount.Add ("yellow", 0);
-		this.buttonCount.Add ("pink", 0);
-		this.buttonCount.Add ("black", 0);
-		this.buttonCount.Add ("red", 0);
-		this.buttonCount.Add ("purple", 0);
-		this.buttonCount.Add ("orange", 0);
-		this.buttonCount.Add ("white", 0);
-		Debug.Log("Base module Constructor...");
-	}
-
-	public int executionTime{
+	private int executionTime;
+	public int ExecutionTime{
 		get { return executionTime; }
 		set { executionTime = value; }
 	}
 
-	public int order{
+	private int order;
+	public int Order{
 		get { return order; }
 		set { order = value; }
 	}
 
-	public int score{
+	private int score;
+	public int Score{
 		get { return score;}
 		set { score = value;}
 	}
 
-	public Dictionary<string, int> buttonCount{
+	private Dictionary<string, int> buttonCount;
+	public Dictionary<string, int> ButtonCount{
 		get { return buttonCount; }
 		set { buttonCount = value; }
+	}
+
+	public BaseModule(){
+		Debug.Log("Base constructor called...");
+		this.ButtonCount = new Dictionary<string, int> ();
+		this.ButtonCount.Add ("BLUE", 0);
+		this.ButtonCount.Add ("GREEN", 0);
+		this.ButtonCount.Add ("YELLOW", 0);
+		this.ButtonCount.Add ("PINK", 0);
+		this.ButtonCount.Add ("BLACK", 0);
+		this.ButtonCount.Add ("RED", 0);
+		this.ButtonCount.Add ("PURPLE", 0);
+		this.ButtonCount.Add ("ORANGE", 0);
+		this.ButtonCount.Add ("WHITE", 0);
 	}
 
 	//Icomparable method
@@ -48,12 +53,7 @@ public abstract class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 			return 1;
 		}
 		else {
-			if(this.order < other.order){
-				return this.order;
-			}
-			else{
-				return other.order;
-			}
+			return (this.Order < other.Order) ? this.Order : other.order; 
 		}
 	}
 

@@ -1,7 +1,10 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public class VariableRatioModule : BaseModule {
+public class VariableRatioModule : BaseModule{
+
+	public VariableRatioModule(){
+
+	}
 
 
 	public string targetButton{

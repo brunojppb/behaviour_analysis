@@ -13,13 +13,16 @@ public class SessionManager : MonoBehaviour {
 	private List<BaseModule> modules;
 
 	public void SetUpSession(){
+
+		//initialize a list of modules
 		this.modules = new List<BaseModule> ();
+
 		//check witch module will run on the session
 		//and setup each Module Object with its paramters
 		if (variableRatioManager.enabled) {
 			VariableRatioModule v = new VariableRatioModule();
-			v.executionTime = int.Parse(variableRatioManager.executionTime.text.ToString());
-			v.order = int.Parse(variableRatioManager.order.text.ToString());
+			v.ExecutionTime = int.Parse(variableRatioManager.executionTime.text.ToString());
+			v.Order = int.Parse(variableRatioManager.order.text.ToString());
 			v.targetButton = variableRatioManager.buttonSelected;
 			modules.Add(v);
 		}
