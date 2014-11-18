@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,7 +11,9 @@ public class SessionManager : MonoBehaviour {
 	public PanelExtinctionManager extinctionManager;
 	public PanelFixedTimeManager fixedTimeManager;
 	public PanelPenaltyManager penaltyManager;
-	
+
+	public Button[] buttons;
+
 	private List<BaseModule> modules;
 
 	public void SetUpSession(){
@@ -21,10 +24,13 @@ public class SessionManager : MonoBehaviour {
 		//check if each module will run on the session
 		//and setup each Module Object with its paramters
 		if (variableRatioManager.enabled) {
-			VariableRatioModule vr = new VariableRatioModule();
+			int variableRatio = int.Parse(variableRatioManager.variableRatio.text.ToString());
+			string targetButton = variableRatioManager.ButtonSelected;
+			VariableRatioModule vr = new VariableRatioModule(variableRatio, targetButton);
+
 			vr.ExecutionTime = int.Parse(variableRatioManager.executionTime.text.ToString());
 			vr.Order = int.Parse(variableRatioManager.order.text.ToString());
-			vr.TargetButton = variableRatioManager.ButtonSelected;
+
 			modules.Add(vr);
 		}
 
@@ -44,7 +50,59 @@ public class SessionManager : MonoBehaviour {
 	IEnumerator ExecuteModules(){
 		int moduleIndex = 0;
 		while (moduleIndex < this.modules.Count) {
+			BaseModule actualModule = modules[moduleIndex];
+			Debug.Log("Module " + actualModule.GetType().Name + " Running...");
+
+			//add a callback method to each button based on the module
+			foreach(Button button in this.buttons){
+				this.addListener(button, actualModule);
+			}
+
+			//if the actual module is a instance of VariableRatioModule
+			//execute its specialized methods
+			if(modules[moduleIndex] is VariableRatioModule){
+				VariableRatioModule vr = modules[moduleIndex] as VariableRatioModule;
+
+			}
+			//execute the module using its own execution time
 			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime);
+
+			//remove all callbacks from the buttons
+			foreach(Button button in this.buttons){
+				button.onClick.RemoveAllListeners();
+			}
+
+			//jump for the next module
+			moduleIndex++;
 		}
+
+		//End of the session
+		Debug.Log("End of the session...");
+	}
+
+	//Add a callback to the button
+	void addListener(Button b, BaseModule module){
+	
+		b.onClick.AddListener (() => module.ButtonClicked(b.name));
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

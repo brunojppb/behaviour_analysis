@@ -2300,15 +2300,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 278675775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 8782dccabb4d24e8f8e561acce884a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variableRatioManager: {fileID: 0}
-  DROManager: {fileID: 0}
-  DROVRManager: {fileID: 0}
-  extinctionManager: {fileID: 0}
-  fixedTimeManager: {fileID: 0}
-  penaltyManager: {fileID: 0}
+  variableRatioManager: {fileID: 496759795}
+  DROManager: {fileID: 664814032}
+  DROVRManager: {fileID: 1276848983}
+  extinctionManager: {fileID: 1445534932}
+  fixedTimeManager: {fileID: 2085851439}
+  penaltyManager: {fileID: 264146024}
 --- !u!1 &279008566
 GameObject:
   m_ObjectHideFlags: 0
@@ -12748,6 +12748,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 278675776}
         m_MethodName: toggleButtonsScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 278675778}
+        m_MethodName: SetUpSession
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

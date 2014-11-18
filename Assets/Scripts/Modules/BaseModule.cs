@@ -52,6 +52,8 @@ public abstract class BaseModule : IComparable<BaseModule>{
 		this.ExecutionTime = 0;
 	}
 
+	public abstract void ButtonClicked (string buttonColor);
+
 	//Icomparable method
 	public int CompareTo(BaseModule other){
 		if (other == null) {
