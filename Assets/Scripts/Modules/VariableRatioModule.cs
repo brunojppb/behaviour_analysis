@@ -2,22 +2,23 @@
 
 public class VariableRatioModule : BaseModule{
 
-	public VariableRatioModule(){
-
-	}
-
-
-	public string targetButton{
+	private string targetButton;
+	public string TargetButton{
 		get { return targetButton; }
 		set { targetButton = value; }
 	}
-
-	public int variableRatio{
+	
+	private int variableRatio;
+	public int VariableRatio{
 		get { return variableRatio; }
 		set { variableRatio = value; }
 	}
 
-	public override void outputData(string filename){
+	public VariableRatioModule(){
+
+	}
+
+	public override void OutPutData(string filename){
 		//Output the computed data when the module ends;
 	}
 

@@ -624,7 +624,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Name
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &93221626
 MonoBehaviour:
@@ -788,12 +788,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 107348620}
   m_TextComponent: {fileID: 1086526918}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -806,7 +806,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &107348620
 MonoBehaviour:
@@ -982,12 +982,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 109743572}
   m_TextComponent: {fileID: 772331409}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Variable Ratio
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &109743572
 MonoBehaviour:
@@ -1465,7 +1465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &186692844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1676,7 +1676,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &241331479
@@ -1856,7 +1856,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &253899995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2158,12 +2158,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 279008569}
   m_TextComponent: {fileID: 1287387288}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -2176,7 +2176,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &279008569
 MonoBehaviour:
@@ -2633,12 +2633,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 377068467}
   m_TextComponent: {fileID: 1154446079}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -2651,7 +2651,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &377068467
 MonoBehaviour:
@@ -3372,8 +3372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetButtonDropDown: {fileID: 87972362}
-  executionTime: {fileID: 0}
-  order: {fileID: 0}
+  variableRatio: {fileID: 1194829546}
+  executionTime: {fileID: 567503341}
+  order: {fileID: 1941703866}
 --- !u!1 &515088545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,7 +3551,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &515665298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3643,7 +3644,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: blue
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &541601078
@@ -3931,12 +3932,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 567503342}
   m_TextComponent: {fileID: 186692843}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -3949,7 +3950,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &567503342
 MonoBehaviour:
@@ -4333,12 +4334,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 611096248}
   m_TextComponent: {fileID: 2031775823}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -4351,7 +4352,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &611096248
 MonoBehaviour:
@@ -5196,7 +5197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &680629363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5632,7 +5633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Variable Ratio
 --- !u!222 &772331410
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5780,7 +5781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -6331,7 +6332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -6751,12 +6752,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1002835059}
   m_TextComponent: {fileID: 680629362}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -6769,7 +6770,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1002835059
 MonoBehaviour:
@@ -6857,7 +6858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &1043035893
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7218,7 +7219,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &1086526919
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7299,12 +7300,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1109780267}
   m_TextComponent: {fileID: 1649355682}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -7317,7 +7318,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1109780267
 MonoBehaviour:
@@ -7950,7 +7951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -8024,7 +8025,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &1154446080
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8351,7 +8352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Variable Ratio
 --- !u!222 &1192208110
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8432,12 +8433,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1194829547}
   m_TextComponent: {fileID: 1192208109}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -8450,7 +8451,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Variable Ratio
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1194829547
 MonoBehaviour:
@@ -8791,7 +8792,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &1287387289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9018,7 +9019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -9327,12 +9328,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1347752626}
   m_TextComponent: {fileID: 1043035892}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -9345,7 +9346,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1347752626
 MonoBehaviour:
@@ -9433,7 +9434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &1370817785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10103,7 +10104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -10942,7 +10943,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &1649355683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11663,12 +11664,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1768731723}
   m_TextComponent: {fileID: 253899994}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -11681,7 +11682,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Execution Time
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1768731723
 MonoBehaviour:
@@ -12115,7 +12116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .235294119}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -12378,12 +12379,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1818634687}
   m_TextComponent: {fileID: 515665297}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -12396,7 +12397,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1818634687
 MonoBehaviour:
@@ -13090,12 +13091,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1941703867}
   m_TextComponent: {fileID: 2109044765}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -13108,7 +13109,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1941703867
 MonoBehaviour:
@@ -13211,12 +13212,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1958647201}
   m_TextComponent: {fileID: 1370817784}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_EndEdit:
     m_PersistentCalls:
@@ -13229,7 +13230,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .104999997, g: .630999982, b: .885999978, a: .300000012}
-  m_Text: 
+  m_Text: Order
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1958647201
 MonoBehaviour:
@@ -13487,7 +13488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Name
 --- !u!222 &2007060779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13773,7 +13774,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Execution Time
 --- !u!222 &2031775824
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14292,7 +14293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Order
 --- !u!222 &2109044766
 CanvasRenderer:
   m_ObjectHideFlags: 0

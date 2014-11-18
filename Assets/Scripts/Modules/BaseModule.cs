@@ -35,16 +35,21 @@ public abstract class BaseModule : IComparable<BaseModule>{
 
 	public BaseModule(){
 		Debug.Log("Base constructor called...");
+		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
-		this.ButtonCount.Add ("BLUE", 0);
-		this.ButtonCount.Add ("GREEN", 0);
-		this.ButtonCount.Add ("YELLOW", 0);
-		this.ButtonCount.Add ("PINK", 0);
-		this.ButtonCount.Add ("BLACK", 0);
-		this.ButtonCount.Add ("RED", 0);
-		this.ButtonCount.Add ("PURPLE", 0);
-		this.ButtonCount.Add ("ORANGE", 0);
-		this.ButtonCount.Add ("WHITE", 0);
+		this.ButtonCount.Add ("blue", 0);
+		this.ButtonCount.Add ("green", 0);
+		this.ButtonCount.Add ("yellow", 0);
+		this.ButtonCount.Add ("pink", 0);
+		this.ButtonCount.Add ("black", 0);
+		this.ButtonCount.Add ("red", 0);
+		this.ButtonCount.Add ("purple", 0);
+		this.ButtonCount.Add ("orange", 0);
+		this.ButtonCount.Add ("white", 0);
+
+		this.Score = 0;
+		this.order = 0;
+		this.ExecutionTime = 0;
 	}
 
 	//Icomparable method
@@ -57,5 +62,5 @@ public abstract class BaseModule : IComparable<BaseModule>{
 		}
 	}
 
-	public abstract void outputData (string fileName);
+	public abstract void OutPutData (string fileName);
 }

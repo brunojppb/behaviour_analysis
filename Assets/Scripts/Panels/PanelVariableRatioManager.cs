@@ -5,10 +5,13 @@ using System.Collections;
 public class PanelVariableRatioManager : MonoBehaviour {
 
 	public Animator targetButtonDropDown;
+
+	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
 
-	public string buttonSelected{
+	private string buttonSelected;
+	public string ButtonSelected{
 		get {return buttonSelected;}
 		set {buttonSelected = value;}
 	}
@@ -19,7 +22,7 @@ public class PanelVariableRatioManager : MonoBehaviour {
 	}
 
 	public void selectButton(string buttonColor){
-		this.buttonSelected = buttonColor;
+		this.ButtonSelected = buttonColor;
 		this.toggleVrTargetButtonDropDown();
 	}
 }
