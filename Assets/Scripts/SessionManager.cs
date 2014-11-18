@@ -12,8 +12,14 @@ public class SessionManager : MonoBehaviour {
 	public PanelFixedTimeManager fixedTimeManager;
 	public PanelPenaltyManager penaltyManager;
 
+	//User data
+	public InputField username;
+	public Text score;
+
+	//list of buttons that will perform actions based on modules
 	public Button[] buttons;
 
+	//list of modules that will execute 
 	private List<BaseModule> modules;
 
 	public void SetUpSession(){
@@ -60,10 +66,11 @@ public class SessionManager : MonoBehaviour {
 
 			//if the actual module is a instance of VariableRatioModule
 			//execute its specialized methods
-			if(modules[moduleIndex] is VariableRatioModule){
-				VariableRatioModule vr = modules[moduleIndex] as VariableRatioModule;
+			//if(modules[moduleIndex] is VariableRatioModule){
+				//VariableRatioModule vr = modules[moduleIndex] as VariableRatioModule;
 
-			}
+			//}
+
 			//execute the module using its own execution time
 			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime);
 
@@ -78,6 +85,9 @@ public class SessionManager : MonoBehaviour {
 
 		//End of the session
 		Debug.Log("End of the session...");
+		//write in file the results
+		foreach(BaseModule module in modules)
+			module.OutPutData("result.txt");
 	}
 
 	//Add a callback to the button
@@ -85,6 +95,17 @@ public class SessionManager : MonoBehaviour {
 	
 		b.onClick.AddListener (() => module.ButtonClicked(b.name));
 
+	}
+
+	void Update(){
+		//update the user score
+		if (this.modules != null && this.modules.Count > 0) {
+			int scoreSum = 0;
+			foreach (BaseModule module in this.modules) {
+				scoreSum += module.Score;
+			}
+			this.score.text = scoreSum.ToString ();
+		}
 	}
 }
 

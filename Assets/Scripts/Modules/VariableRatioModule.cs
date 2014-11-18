@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
 
 public class VariableRatioModule : BaseModule{
 
@@ -57,6 +58,22 @@ public class VariableRatioModule : BaseModule{
 
 	public override void OutPutData(string filename){
 		//Output the computed data when the module ends;
+		double timeInMinutes = this.ExecutionTime/60.0;
+		string text = "Variable Ratio Module\n";
+		text += "VR: " + this.VariableRatio;
+		text += "\nExecution Time: " + timeInMinutes + " minutes";
+		text += "\nTarget Button: " + this.TargetButton;
+		// The using statement automatically closes the stream and calls  
+		// IDisposable.Dispose on the stream object. 
+		using (StreamWriter file = new StreamWriter (filename, true)) {
+			file.WriteLine (text);
+			foreach(string key in this.ButtonCount.Keys){
+				file.WriteLine("\nButton: " + key);
+				file.WriteLine("Response Count: " + this.ButtonCount[key]);
+				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+			}
+
+		}
 	}
 
 	private int generateRandomVR(){
