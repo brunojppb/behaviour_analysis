@@ -29,24 +29,48 @@ public class SessionManager : MonoBehaviour {
 
 		//check if each module will run on the session
 		//and setup each Module Object with its paramters
+		//=================================================
+		//First module - Variable Ratio
+		//=================================================
 		if (variableRatioManager.enabled) {
 			int variableRatio = int.Parse(variableRatioManager.variableRatio.text.ToString());
 			string targetButton = variableRatioManager.ButtonSelected;
-			VariableRatioModule vr = new VariableRatioModule(variableRatio, targetButton);
+			int execTime = int.Parse(variableRatioManager.executionTime.text.ToString());
+			int order = int.Parse(variableRatioManager.order.text.ToString());
 
-			vr.ExecutionTime = int.Parse(variableRatioManager.executionTime.text.ToString());
-			vr.Order = int.Parse(variableRatioManager.order.text.ToString());
+			VariableRatioModule vr = this.variableRatioManager.gameObject.AddComponent("VariableRatioModule") as VariableRatioModule;
+			vr.VariableRatio = variableRatio;
+			vr.TargetButton = targetButton;
+			vr.ExecutionTime = execTime;
+			vr.Order = order;
 
 			modules.Add(vr);
 		}
 
-		//.......
+		//=================================================
+		//Second module - DRO
+		//=================================================
 		if(DROManager.enabled){
 			//instantiate the module and put into the array
+			int timeInterval = int.Parse(this.DROManager.timeInteval.text.ToString());
+			string targetButton = this.DROManager.ButtonSelected;
+			int execTime = int.Parse(this.DROManager.executionTime.text.ToString());
+			int order = int.Parse(this.DROManager.order.text.ToString());
+
+			DROModule dro = this.DROManager.gameObject.AddComponent("DROModule") as DROModule;
+			dro.TimeInterval = timeInterval;
+			dro.TargetButton = targetButton;
+			dro.ExecutionTime = execTime;
+			dro.Order = order;
+
+			Debug.Log ("DRO ORDER: " + order);
+
+			modules.Add(dro);
 		}
 		//........
 
-		//sort the modules to execute following the order that was inputted
+		//after process each module
+		//sort them to execute following the order
 		this.modules.Sort ();
 
 		//start a coroutine to iterate each module with its own time
@@ -58,21 +82,20 @@ public class SessionManager : MonoBehaviour {
 		while (moduleIndex < this.modules.Count) {
 			BaseModule actualModule = modules[moduleIndex];
 			Debug.Log("Module " + actualModule.GetType().Name + " Running...");
-
+			Debug.Log("Exec Time: " + actualModule.ExecutionTime);
 			//add a callback method to each button based on the module
 			foreach(Button button in this.buttons){
 				this.addListener(button, actualModule);
 			}
 
-			//if the actual module is a instance of VariableRatioModule
-			//execute its specialized methods
-			//if(modules[moduleIndex] is VariableRatioModule){
-				//VariableRatioModule vr = modules[moduleIndex] as VariableRatioModule;
-
-			//}
+			//start specialized functions for each module
+			actualModule.StartModule();
 
 			//execute the module using its own execution time
 			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime);
+
+			//stop specialized functions for each module
+			actualModule.StopModule();
 
 			//remove all callbacks from the buttons
 			foreach(Button button in this.buttons){
@@ -87,7 +110,7 @@ public class SessionManager : MonoBehaviour {
 		Debug.Log("End of the session...");
 		//write in file the results
 		foreach(BaseModule module in modules)
-			module.OutPutData("result.txt");
+			module.OutputData("result.txt");
 	}
 
 	//Add a callback to the button
@@ -96,6 +119,7 @@ public class SessionManager : MonoBehaviour {
 		b.onClick.AddListener (() => module.ButtonClicked(b.name));
 
 	}
+
 
 	void Update(){
 		//update the user score

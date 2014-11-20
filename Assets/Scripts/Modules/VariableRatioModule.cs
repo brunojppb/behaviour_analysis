@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -20,14 +21,39 @@ public class VariableRatioModule : BaseModule{
 	private int randomVariation;
 	private int clickCount;
 
-	public VariableRatioModule(int _variableRatio, string target){
-		this.variableRatio = _variableRatio;
-		this.targetButton = target;
+//	public VariableRatioModule(int _variableRatio, string target, int execTime, int order){
+//		this.variableRatio = _variableRatio;
+//		this.targetButton = target;
+//		this.ExecutionTime = execTime;
+//		this.Order = order;
+//		randomVariation = this.generateRandomVR();
+//		clickCount = 0;
+//		Debug.Log ("Random Number: " + this.randomVariation);
+//		Debug.Log ("Target Button: " + this.TargetButton);
+//	}
+
+	public override void StartModule(){
+		//initialize the button counter
+		this.ButtonCount = new Dictionary<string, int> ();
+		this.ButtonCount.Add ("blue", 0);
+		this.ButtonCount.Add ("green", 0);
+		this.ButtonCount.Add ("yellow", 0);
+		this.ButtonCount.Add ("pink", 0);
+		this.ButtonCount.Add ("black", 0);
+		this.ButtonCount.Add ("red", 0);
+		this.ButtonCount.Add ("purple", 0);
+		this.ButtonCount.Add ("orange", 0);
+		this.ButtonCount.Add ("white", 0);
+
+
+
 		randomVariation = this.generateRandomVR();
 		clickCount = 0;
 		Debug.Log ("Random Number: " + this.randomVariation);
 		Debug.Log ("Target Button: " + this.TargetButton);
 	}
+
+	public override void StopModule(){}
 
 	public override void ButtonClicked (string buttonColor){
 		//search for the button...
@@ -56,10 +82,14 @@ public class VariableRatioModule : BaseModule{
 		}
 	}
 
-	public override void OutPutData(string filename){
+
+	public override void OutputData(string filename){
 		//Output the computed data when the module ends;
 		double timeInMinutes = this.ExecutionTime/60.0;
-		string text = "Variable Ratio Module\n";
+		string text = "";
+		text += "\n=================================================\n";
+		text += "VR Module";
+		text += "\n=================================================\n";
 		text += "VR: " + this.VariableRatio;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
