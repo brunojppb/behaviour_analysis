@@ -33,29 +33,15 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 		set { buttonCount = value; }
 	}
 
-//	public BaseModule(){
-//		//initialize the button counter
-//		this.ButtonCount = new Dictionary<string, int> ();
-//		this.ButtonCount.Add ("blue", 0);
-//		this.ButtonCount.Add ("green", 0);
-//		this.ButtonCount.Add ("yellow", 0);
-//		this.ButtonCount.Add ("pink", 0);
-//		this.ButtonCount.Add ("black", 0);
-//		this.ButtonCount.Add ("red", 0);
-//		this.ButtonCount.Add ("purple", 0);
-//		this.ButtonCount.Add ("orange", 0);
-//		this.ButtonCount.Add ("white", 0);
-//	}
-
 	//Icomparable method
 	public int CompareTo(BaseModule other){
 		if (other == null)
 			return 1;
 
 		if (this.Order < other.Order)
-			return 1;
+			return -1;
 		else
-			return 0;
+			return 1;
 
 	
 

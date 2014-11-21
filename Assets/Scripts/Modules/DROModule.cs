@@ -17,13 +17,6 @@ public class DROModule : BaseModule {
 		set { targetButton = value; }
 	}
 
-	public DROModule(int timeInteval, string targetButton, int execTime, int order){
-		this.timeInteval = timeInteval;
-		this.targetButton = targetButton;
-		this.ExecutionTime = execTime;
-		this.Order = order;
-	}
-
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
@@ -51,7 +44,9 @@ public class DROModule : BaseModule {
 	public override void StopModule(){
 		StopCoroutine ("DeliveryPoints");
 	}
-	
+
+
+
 	public override void ButtonClicked(string color){
 
 		//search for the button...
@@ -82,14 +77,18 @@ public class DROModule : BaseModule {
 		text += "Time Interval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
+		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			file.WriteLine (text);
+			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate";
+			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
-				file.WriteLine("\nButton: " + key);
-				file.WriteLine("Response Count: " + this.ButtonCount[key]);
-				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				//				file.WriteLine("\nButton: " + key);
+				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
+				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
 			}
 			
 		}

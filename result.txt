@@ -1,340 +1,58 @@
-
-=================================================
-Time Interval: 3
-Execution Time: 0.166666666666667 minutes
-Target Button: blue
-
-Button: blue
-Response Count: 15
-Response Rate: 90 responses per minute
-
-Button: green
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
-
-=================================================
-VR: 3
-Execution Time: 0.166666666666667 minutes
-Target Button: green
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 33
-Response Rate: 198 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
-
-=================================================
-VR Module
-=================================================
-VR: 3
-Execution Time: 0.166666666666667 minutes
-Target Button: green
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 9
-Response Rate: 54 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
+Participant Name: Bruno
+Total Score: 16
 
 =================================================
 DRO Module
 =================================================
 Time Interval: 2
-Execution Time: 0.1 minutes
-Target Button: yellow
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 26
-Response Rate: 260 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
-
-=================================================
-DRO Module
-=================================================
-Time Interval: 3
-Execution Time: 0.05 minutes
+Execution Time: 0.166666666666667 minutes
 Target Button: green
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
+Score: 3
+Button		Response Count		Response Rate
+blue		8			48 responses per minute
+green		12			72 responses per minute
+yellow		2			12 responses per minute
+pink		8			48 responses per minute
+black		4			24 responses per minute
+red		2			12 responses per minute
+purple		2			12 responses per minute
+orange		2			12 responses per minute
+white		2			12 responses per minute
 
 =================================================
 VR Module
+=================================================
+VR: 2
+Execution Time: 0.166666666666667 minutes
+Target Button: blue
+Score: 3
+Button		Response Count		Response Rate
+blue		10			60 responses per minute
+green		3			18 responses per minute
+yellow		5			30 responses per minute
+pink		3			18 responses per minute
+black		5			30 responses per minute
+red		8			48 responses per minute
+purple		2			12 responses per minute
+orange		4			24 responses per minute
+white		4			24 responses per minute
+
+=================================================
+DROVR Module
 =================================================
 VR: 3
-Execution Time: 0.05 minutes
-Target Button: blue
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
-
-=================================================
-DRO Module
-=================================================
-Time Interval: 2
-Execution Time: 0.05 minutes
-Target Button: blue
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
-
-=================================================
-VR Module
-=================================================
-VR: 1
-Execution Time: 0.0333333333333333 minutes
-Target Button: green
-
-Button: blue
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: green
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: yellow
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: pink
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: black
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: red
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: purple
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: orange
-Response Count: 0
-Response Rate: 0 responses per minute
-
-Button: white
-Response Count: 0
-Response Rate: 0 responses per minute
+Time Inteval: 1
+Execution Time: 0.166666666666667 minutes
+DRO Target Button: red
+VR Target Button: purple
+Score: 10
+Button		Response Count		Response Rate
+blue		2			12 responses per minute
+green		4			24 responses per minute
+yellow		3			18 responses per minute
+pink		6			36 responses per minute
+black		6			36 responses per minute
+red		4			24 responses per minute
+purple		5			30 responses per minute
+orange		4			24 responses per minute
+white		4			24 responses per minute

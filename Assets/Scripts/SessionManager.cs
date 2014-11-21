@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class SessionManager : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class SessionManager : MonoBehaviour {
 	public PanelPenaltyManager penaltyManager;
 
 	//User data
-	public InputField username;
+	public InputField participantName;
 	public Text score;
 
 	//list of buttons that will perform actions based on modules
@@ -63,9 +64,28 @@ public class SessionManager : MonoBehaviour {
 			dro.ExecutionTime = execTime;
 			dro.Order = order;
 
-			Debug.Log ("DRO ORDER: " + order);
-
 			modules.Add(dro);
+		}
+		//=================================================
+		//Third module - DROVR
+		//=================================================
+		if (DROVRManager.enabled) {
+			int timeInterval = int.Parse(this.DROVRManager.timeInterval.text.ToString());
+			int variableRatio = int.Parse(this.DROVRManager.variableRatio.text.ToString());
+			string vrTargetButton = this.DROVRManager.VrTargetButtonSelected;
+			string droTargetButton = this.DROVRManager.DroTargetButtonSelected;
+			int execTime = int.Parse(this.DROVRManager.executionTime.text.ToString());
+			int order = int.Parse(this.DROVRManager.order.text.ToString());
+
+			DROVRModule droVr = this.DROVRManager.gameObject.AddComponent("DROVRModule") as DROVRModule;
+			droVr.TimeInterval = timeInterval;
+			droVr.VariableRatio = variableRatio;
+			droVr.VrTargetButton = vrTargetButton;
+			droVr.DroTargetButton = droTargetButton;
+			droVr.ExecutionTime = execTime;
+			droVr.Order = order;
+
+			modules.Add(droVr);
 		}
 		//........
 
@@ -109,6 +129,11 @@ public class SessionManager : MonoBehaviour {
 		//End of the session
 		Debug.Log("End of the session...");
 		//write in file the results
+
+		//write session information
+		this.outputSesionData("result.txt");
+
+		//write each module
 		foreach(BaseModule module in modules)
 			module.OutputData("result.txt");
 	}
@@ -129,6 +154,15 @@ public class SessionManager : MonoBehaviour {
 				scoreSum += module.Score;
 			}
 			this.score.text = scoreSum.ToString ();
+		}
+	}
+
+	void outputSesionData(string filename){
+		using (StreamWriter file = new StreamWriter (filename, true)) {
+			string text = "";
+			text += "Participant Name: " + this.participantName.text.ToString();
+			text += "\nTotal Score: " + this.score.text.ToString();
+			file.WriteLine(text);
 		}
 	}
 }

@@ -21,17 +21,6 @@ public class VariableRatioModule : BaseModule{
 	private int randomVariation;
 	private int clickCount;
 
-//	public VariableRatioModule(int _variableRatio, string target, int execTime, int order){
-//		this.variableRatio = _variableRatio;
-//		this.targetButton = target;
-//		this.ExecutionTime = execTime;
-//		this.Order = order;
-//		randomVariation = this.generateRandomVR();
-//		clickCount = 0;
-//		Debug.Log ("Random Number: " + this.randomVariation);
-//		Debug.Log ("Target Button: " + this.TargetButton);
-//	}
-
 	public override void StartModule(){
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
@@ -93,16 +82,20 @@ public class VariableRatioModule : BaseModule{
 		text += "VR: " + this.VariableRatio;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
+		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			file.WriteLine (text);
+			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate";
+			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
-				file.WriteLine("\nButton: " + key);
-				file.WriteLine("Response Count: " + this.ButtonCount[key]);
-				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				//				file.WriteLine("\nButton: " + key);
+				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
+				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
 			}
-
+			
 		}
 	}
 
