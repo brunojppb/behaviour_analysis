@@ -6,12 +6,18 @@ using System.IO;
 
 public class SessionManager : MonoBehaviour {
 
+	//PANEL MODULES
 	public PanelVariableRatioManager variableRatioManager;
 	public PanelDROManager DROManager;
 	public PanelDROVRManager DROVRManager;
 	public PanelExtinctionManager extinctionManager;
 	public PanelFixedTimeManager fixedTimeManager;
 	public PanelPenaltyManager penaltyManager;
+
+	//PANEL GAMEOBJECTS
+	public GameObject variableRatio;
+	public GameObject DRO;
+	public GameObject DROVR;
 
 	//User data
 	public InputField participantName;
@@ -33,7 +39,7 @@ public class SessionManager : MonoBehaviour {
 		//=================================================
 		//First module - Variable Ratio
 		//=================================================
-		if (variableRatioManager.enabled) {
+		if (this.variableRatio.activeSelf) {
 			int variableRatio = int.Parse(variableRatioManager.variableRatio.text.ToString());
 			string targetButton = variableRatioManager.ButtonSelected;
 			int execTime = int.Parse(variableRatioManager.executionTime.text.ToString());
@@ -51,7 +57,7 @@ public class SessionManager : MonoBehaviour {
 		//=================================================
 		//Second module - DRO
 		//=================================================
-		if(DROManager.enabled){
+		if(DRO.activeSelf){
 			//instantiate the module and put into the array
 			int timeInterval = int.Parse(this.DROManager.timeInteval.text.ToString());
 			string targetButton = this.DROManager.ButtonSelected;
@@ -69,19 +75,19 @@ public class SessionManager : MonoBehaviour {
 		//=================================================
 		//Third module - DROVR
 		//=================================================
-		if (DROVRManager.enabled) {
+		if (DROVR.activeSelf) {
 			int timeInterval = int.Parse(this.DROVRManager.timeInterval.text.ToString());
 			int variableRatio = int.Parse(this.DROVRManager.variableRatio.text.ToString());
-			string vrTargetButton = this.DROVRManager.VrTargetButtonSelected;
-			string droTargetButton = this.DROVRManager.DroTargetButtonSelected;
+			string targetButton = this.DROVRManager.TargetButton;
+			//string droTargetButton = this.DROVRManager.DroTargetButtonSelected;
 			int execTime = int.Parse(this.DROVRManager.executionTime.text.ToString());
 			int order = int.Parse(this.DROVRManager.order.text.ToString());
 
 			DROVRModule droVr = this.DROVRManager.gameObject.AddComponent("DROVRModule") as DROVRModule;
 			droVr.TimeInterval = timeInterval;
 			droVr.VariableRatio = variableRatio;
-			droVr.VrTargetButton = vrTargetButton;
-			droVr.DroTargetButton = droTargetButton;
+			droVr.TargetButton = targetButton;
+			//droVr.DroTargetButton = droTargetButton;
 			droVr.ExecutionTime = execTime;
 			droVr.Order = order;
 

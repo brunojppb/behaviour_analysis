@@ -1,58 +1,57 @@
-Participant Name: Bruno
-Total Score: 16
+Participant Name: Participant
+Total Score: 9
 
 =================================================
 DRO Module
 =================================================
-Time Interval: 2
+Time Interval: 3
 Execution Time: 0.166666666666667 minutes
 Target Button: green
 Score: 3
-Button		Response Count		Response Rate
-blue		8			48 responses per minute
-green		12			72 responses per minute
-yellow		2			12 responses per minute
-pink		8			48 responses per minute
-black		4			24 responses per minute
-red		2			12 responses per minute
-purple		2			12 responses per minute
-orange		2			12 responses per minute
-white		2			12 responses per minute
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		0			0
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
 
 =================================================
 VR Module
 =================================================
-VR: 2
+VR: 5
 Execution Time: 0.166666666666667 minutes
 Target Button: blue
-Score: 3
-Button		Response Count		Response Rate
-blue		10			60 responses per minute
-green		3			18 responses per minute
-yellow		5			30 responses per minute
-pink		3			18 responses per minute
-black		5			30 responses per minute
-red		8			48 responses per minute
-purple		2			12 responses per minute
-orange		4			24 responses per minute
-white		4			24 responses per minute
+Score: 0
+Button		Response Count		Response Rate(responses per minute)
+blue		1			6
+green		3			18
+yellow		2			12
+pink		1			6
+black		3			18
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
 
 =================================================
 DROVR Module
 =================================================
-VR: 3
-Time Inteval: 1
+VR: 4
+Time Inteval: 3
 Execution Time: 0.166666666666667 minutes
-DRO Target Button: red
-VR Target Button: purple
-Score: 10
-Button		Response Count		Response Rate
-blue		2			12 responses per minute
-green		4			24 responses per minute
-yellow		3			18 responses per minute
-pink		6			36 responses per minute
-black		6			36 responses per minute
-red		4			24 responses per minute
-purple		5			30 responses per minute
-orange		4			24 responses per minute
-white		4			24 responses per minute
+Target Button: yellow
+Score: 6
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		1			6
+yellow		1			6
+pink		0			0
+black		1			6
+red		2			12
+purple		0			0
+orange		3			18
+white		2			12

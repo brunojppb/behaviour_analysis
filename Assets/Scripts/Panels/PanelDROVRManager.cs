@@ -4,45 +4,29 @@ using System.Collections;
 
 public class PanelDROVRManager : MonoBehaviour {
 
-	public Animator vrTargetButton;
-	public Animator droTargetButton;
+	public Animator targetButtonAnimator;
 
 	public InputField timeInterval;
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
 
-	private string vrTargetButtonSelected;
-	public string VrTargetButtonSelected{
-		get {return vrTargetButtonSelected;}
-		set {vrTargetButtonSelected = value;}
-	}
-
-	private string droTargetButtonSelected;
-	public string DroTargetButtonSelected{
-		get {return droTargetButtonSelected;}
-		set {droTargetButtonSelected = value;}
+	private string targetButton;
+	public string TargetButton{
+		get {return targetButton;}
+		set {targetButton = value;}
 	}
 
 
-	public void selectVrButton(string buttonColor){
-		this.vrTargetButtonSelected = buttonColor;
-		this.toggleVrTargetButtonMenu();
-	}
-
-	public void selectDroButton(string buttonColor){
-		this.droTargetButtonSelected = buttonColor;
-		this.toggledroTargetButtonMenu();
+	public void selectButton(string buttonColor){
+		this.targetButton = buttonColor;
+		this.toggleTargetButtonMenu();
 	}
 
 
-	public void toggleVrTargetButtonMenu(){
-		bool isHidden = vrTargetButton.GetBool ("isHidden");
-		vrTargetButton.SetBool ("isHidden", !isHidden);
+	public void toggleTargetButtonMenu(){
+		bool isHidden = targetButtonAnimator.GetBool ("isHidden");
+		targetButtonAnimator.SetBool ("isHidden", !isHidden);
 	}
 
-	public void toggledroTargetButtonMenu(){
-		bool isHidden = droTargetButton.GetBool ("isHidden");
-		droTargetButton.SetBool ("isHidden", !isHidden);
-	}
 }

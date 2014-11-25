@@ -82,10 +82,10 @@ public class DROModule : BaseModule {
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			file.WriteLine (text);
-			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate";
+			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate(responses per minute)";
 			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
-				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes);
 				//				file.WriteLine("\nButton: " + key);
 				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
 				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");

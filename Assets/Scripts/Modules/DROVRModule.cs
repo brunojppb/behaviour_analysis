@@ -14,19 +14,19 @@ public class DROVRModule : BaseModule {
 		set {timeInteval = value;}
 	}
 	
-	private string droTargetButton;
-	public string DroTargetButton{
-		get { return droTargetButton; }
-		set { droTargetButton = value; }
-	}
+//	private string droTargetButton;
+//	public string DroTargetButton{
+//		get { return droTargetButton; }
+//		set { droTargetButton = value; }
+//	}
 
 	//===========================================
 	//DRO Module Variables
 	//===========================================
-	private string vrTargetButton;
-	public string VrTargetButton{
-		get { return vrTargetButton; }
-		set { vrTargetButton = value; }
+	private string targetButton;
+	public string TargetButton{
+		get { return targetButton; }
+		set { targetButton = value; }
 	}
 
 	private int variableRatio;
@@ -48,9 +48,11 @@ public class DROVRModule : BaseModule {
 			//...increment the counter
 			this.ButtonCount[buttonColor]++;
 
-			//VR Module logic
+
 			//if the user achieve the variable ratio...
-			if(this.vrTargetButton == buttonColor){
+			if(this.targetButton == buttonColor){
+
+				//VR Module logic
 				if(clickCount == randomVariation){
 					//... he earns 1 point
 					this.Score++;
@@ -65,14 +67,19 @@ public class DROVRModule : BaseModule {
 					//increment the click counter
 					this.clickCount++;
 				}
-			}
 
-			//DRO Logic
-			if(this.droTargetButton == buttonColor){
+				//DRO logic
 				//reset the timer and start again
 				StopCoroutine("DeliveryPoints");
 				StartCoroutine("DeliveryPoints");
 			}
+
+//			//DRO Logic
+//			if(this.droTargetButton == buttonColor){
+//				//reset the timer and start again
+//				StopCoroutine("DeliveryPoints");
+//				StartCoroutine("DeliveryPoints");
+//			}
 		}
 
 	}
@@ -103,12 +110,12 @@ public class DROVRModule : BaseModule {
 	}
 
 	//========================================================
-	//Delivery points based on the time interval
+	//Delivery 2 points based on the time interval
 	//========================================================
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
-			this.Score++;
+			this.Score += 2;
 		}
 	}
 
@@ -129,17 +136,17 @@ public class DROVRModule : BaseModule {
 		text += "VR: " + this.VariableRatio;
 		text += "\nTime Inteval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
-		text += "\nDRO Target Button: " + this.DroTargetButton;
-		text += "\nVR Target Button: " + this.VrTargetButton;
+//		text += "\nDRO Target Button: " + this.DroTargetButton;
+		text += "\nTarget Button: " + this.targetButton;
 		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			file.WriteLine (text);
-			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate";
+			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate(responses per minute)";
 			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
-				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes);
 				//				file.WriteLine("\nButton: " + key);
 				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
 				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
