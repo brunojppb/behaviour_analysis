@@ -155,4 +155,9 @@ public class DROVRModule : BaseModule {
 		}
 	}
 
+	public override string ToString ()
+	{
+		return "DRO+VR";
+	}
+
 }

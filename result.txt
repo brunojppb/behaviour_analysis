@@ -1,57 +1,111 @@
 Participant Name: Participant
 Total Score: 9
+Session LOG:
+
+EVENT RECORDING START
+
+Fixed Time:
+pink	1 s
+purple	1 s
+purple	1 s
+orange	1 s
+black	2 s
+green	2 s
+green	2 s
+green	2 s
+blue	3 s
+blue	3 s
+blue	3 s
+blue	3 s
+blue	3 s
+black	4 s
+black	4 s
+red	4 s
+red	4 s
+yellow	4 s
+yellow	5 s
+white	5 s
+white	5 s
+orange	6 s
+black	6 s
+black	6 s
+pink	7 s
+pink	7 s
+purple	7 s
+purple	7 s
+blue	8 s
+blue	8 s
+green	9 s
+green	9 s
+black	9 s
+black	9 s
+
+Extinction:
+red	10 s
+red	10 s
+yellow	10 s
+yellow	11 s
+red	12 s
+white	12 s
+orange	12 s
+black	13 s
+pink	13 s
+purple	13 s
+purple	13 s
+black	14 s
+black	14 s
+green	14 s
+green	14 s
+yellow	15 s
+yellow	15 s
+red	15 s
+red	15 s
+white	16 s
+white	16 s
+blue	17 s
+blue	17 s
+pink	17 s
+pink	17 s
+purple	18 s
+purple	18 s
+black	18 s
+black	18 s
+orange	19 s
+orange	19 s
+green	19 s
+green	19 s
+
 
 =================================================
-DRO Module
+Fixed Time Module
 =================================================
-Time Interval: 3
+Time Interval: 1
 Execution Time: 0.166666666666667 minutes
-Target Button: green
-Score: 3
+Score: 9
 Button		Response Count		Response Rate(responses per minute)
-blue		0			0
-green		0			0
-yellow		0			0
-pink		0			0
-black		0			0
-red		0			0
-purple		0			0
-orange		0			0
-white		0			0
+blue		7			42
+green		5			30
+yellow		2			12
+pink		3			18
+black		7			42
+red		2			12
+purple		4			24
+orange		2			12
+white		2			12
 
 =================================================
-VR Module
+Extinction Module
 =================================================
-VR: 5
+
 Execution Time: 0.166666666666667 minutes
-Target Button: blue
 Score: 0
 Button		Response Count		Response Rate(responses per minute)
-blue		1			6
-green		3			18
-yellow		2			12
-pink		1			6
-black		3			18
-red		0			0
-purple		0			0
-orange		0			0
-white		0			0
-
-=================================================
-DROVR Module
-=================================================
-VR: 4
-Time Inteval: 3
-Execution Time: 0.166666666666667 minutes
-Target Button: yellow
-Score: 6
-Button		Response Count		Response Rate(responses per minute)
-blue		0			0
-green		1			6
-yellow		1			6
-pink		0			0
-black		1			6
-red		2			12
-purple		0			0
+blue		2			12
+green		4			24
+yellow		4			24
+pink		3			18
+black		5			30
+red		5			30
+purple		4			24
 orange		3			18
-white		2			12
+white		3			18

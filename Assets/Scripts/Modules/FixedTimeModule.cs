@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-public class DROModule : BaseModule {
+public class FixedTimeModule : BaseModule {
 
 	private int timeInteval;
 	public int TimeInterval{
@@ -11,12 +11,7 @@ public class DROModule : BaseModule {
 		set {timeInteval = value;}
 	}
 
-	private string targetButton;
-	public string TargetButton{
-		get { return targetButton; }
-		set { targetButton = value; }
-	}
-
+	//Delive points avery timeInterval (seconds)
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
@@ -24,8 +19,11 @@ public class DROModule : BaseModule {
 		}
 	}
 
-	public override void StartModule ()
-	{
+	//================================================================
+	//Overwritten Methods
+	//================================================================
+	public override void StartModule (){ 
+
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
 		this.ButtonCount.Add ("blue", 0);
@@ -38,45 +36,21 @@ public class DROModule : BaseModule {
 		this.ButtonCount.Add ("orange", 0);
 		this.ButtonCount.Add ("white", 0);
 
-		StartCoroutine ("DeliveryPoints");
+		StartCoroutine("DeliveryPoints");
 	}
-
-	public override void StopModule(){
+	public override void StopModule (){ 
 		StopCoroutine ("DeliveryPoints");
 	}
 
-
-
-	public override void ButtonClicked(string color){
-
-		//search for the button...
-		//Debug.Log ("button clicked");
-		if (this.ButtonCount.ContainsKey (color)) {
-			//Debug.Log ("button Found");
-			//...increment the counter
-			this.ButtonCount [color]++;
-			//if the button clicked was the target button
-			if(color == this.TargetButton){
-				//reset the timer and start again
-				StopCoroutine("DeliveryPoints");
-				StartCoroutine("DeliveryPoints");
-			}
-		}
-
-
-	}
-
-
-	public override void OutputData(string filename){
+	public override void OutputData (string filename){
 		//Output the computed data when the module ends;
 		double timeInMinutes = this.ExecutionTime/60.0;
 		string text = "";
 		text += "\n=================================================\n";
-		text += "DRO Module";
+		text += "Fixed Time Module";
 		text += "\n=================================================\n";
 		text += "Time Interval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
-		text += "\nTarget Button: " + this.TargetButton;
 		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
@@ -86,18 +60,20 @@ public class DROModule : BaseModule {
 			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
 				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes);
-				//				file.WriteLine("\nButton: " + key);
-				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
-				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
-			}
-			
+			}	
+		}
+		
+	}
+	public override void ButtonClicked (string color){ 
+		//search for the button...
+		if (this.ButtonCount.ContainsKey (color)) {
+				//...increment the counter
+				this.ButtonCount [color]++;
 		}
 	}
 
 	public override string ToString ()
 	{
-		return "DRO";
+		return "Fixed Time";
 	}
-
-
 }

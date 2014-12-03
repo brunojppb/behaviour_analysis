@@ -102,4 +102,9 @@ public class VariableRatioModule : BaseModule{
 	private int generateRandomVR(){
 		return Random.Range (this.variableRatio - 2, (this.variableRatio + 2) + 1);
 	}
+
+	public override string ToString ()
+	{
+		return "Variable Ratio";
+	}
 }
