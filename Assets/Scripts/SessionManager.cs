@@ -20,6 +20,7 @@ public class SessionManager : MonoBehaviour {
 	public GameObject DROVR;
 	public GameObject fixedTime;
 	public GameObject extinction;
+	public GameObject penalty;
 
 	//User data
 	public InputField participantName;
@@ -132,6 +133,22 @@ public class SessionManager : MonoBehaviour {
 			extinctionModule.Order = order;
 
 			this.modules.Add(extinctionModule);
+		}
+
+		//=================================================
+		//Sixth Module - Penalty
+		//================================================
+		if (penalty.activeSelf) {
+			int execTime = int.Parse(this.penaltyManager.executionTime.text.ToString());
+			int order = int.Parse(this.penaltyManager.order.text.ToString());
+			string targetButton = this.penaltyManager.TargetButton;
+
+			PenaltyModule penaltyModule = this.penaltyManager.gameObject.AddComponent("PenaltyModule") as PenaltyModule;
+			penaltyModule.ExecutionTime = execTime;
+			penaltyModule.Order = order;
+			penaltyModule.TargetButton = targetButton;
+
+			this.modules.Add(penaltyModule);
 		}
 		//........
 

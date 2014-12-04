@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PanelPenaltyManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public Animator targetButtonDropDown;
+	public InputField executionTime;
+	public InputField order;
+
+	private string targetButton;
+	public string TargetButton{
+		get {return targetButton;}
+		set {targetButton = value;}
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public void toggleVrTargetButtonDropDown(){
+		bool isHidden = targetButtonDropDown.GetBool ("isHidden");
+		targetButtonDropDown.SetBool ("isHidden", !isHidden);
+	}
 	
+	public void selectButton(string buttonColor){
+		this.targetButton = buttonColor;
+		this.toggleVrTargetButtonDropDown();
 	}
 }
