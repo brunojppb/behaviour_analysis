@@ -1,111 +1,297 @@
 Participant Name: Participant
-Total Score: 9
+Total Score: 10
 Session LOG:
 
 EVENT RECORDING START
 
-Fixed Time:
+Variable Ratio:
+blue	1 s
 pink	1 s
-purple	1 s
-purple	1 s
-orange	1 s
-black	2 s
+black	1 s
 green	2 s
-green	2 s
-green	2 s
-blue	3 s
-blue	3 s
-blue	3 s
-blue	3 s
-blue	3 s
+yellow	2 s
+yellow	2 s
+red	3 s
+red	3 s
+red	3 s
+white	3 s
+white	3 s
+orange	4 s
+orange	4 s
 black	4 s
 black	4 s
-red	4 s
-red	4 s
-yellow	4 s
-yellow	5 s
-white	5 s
-white	5 s
+black	4 s
+black	5 s
+pink	5 s
+pink	5 s
+purple	6 s
+purple	6 s
+purple	6 s
 orange	6 s
-black	6 s
-black	6 s
 pink	7 s
 pink	7 s
-purple	7 s
-purple	7 s
-blue	8 s
-blue	8 s
-green	9 s
-green	9 s
-black	9 s
-black	9 s
+pink	7 s
+pink	7 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	9 s
+pink	9 s
+pink	9 s
+pink	9 s
+pink	9 s
+pink	9 s
+pink	9 s
+
+DRO:
+pink	10 s
+pink	10 s
+pink	10 s
+pink	10 s
+pink	10 s
+pink	10 s
+pink	10 s
+pink	11 s
+pink	12 s
+pink	12 s
+pink	12 s
+pink	12 s
+pink	12 s
+pink	13 s
+pink	13 s
+pink	13 s
+pink	14 s
+pink	14 s
+pink	14 s
+pink	14 s
+pink	14 s
+pink	14 s
+pink	15 s
+pink	15 s
+pink	15 s
+blue	15 s
+blue	15 s
+pink	16 s
+pink	16 s
+black	16 s
+black	16 s
+green	17 s
+green	17 s
+blue	17 s
+blue	17 s
+blue	18 s
+pink	18 s
+pink	18 s
+pink	18 s
+purple	19 s
+purple	19 s
+orange	19 s
+orange	19 s
+
+DRO+VR:
+black	20 s
+black	20 s
+pink	20 s
+pink	20 s
+blue	21 s
+blue	21 s
+pink	21 s
+pink	21 s
+pink	21 s
+pink	21 s
+pink	22 s
+pink	22 s
+pink	22 s
+pink	22 s
+pink	22 s
+blue	24 s
+blue	24 s
+green	24 s
+green	24 s
+yellow	25 s
+yellow	25 s
+red	25 s
+red	26 s
+black	26 s
+black	26 s
+orange	27 s
+white	27 s
+white	27 s
+red	28 s
+red	28 s
+yellow	28 s
+yellow	28 s
+green	29 s
+black	29 s
+black	29 s
+
+Penalty:
+blue	30 s
+blue	30 s
+pink	30 s
+pink	30 s
+purple	31 s
+purple	31 s
+pink	31 s
+pink	32 s
+blue	32 s
+blue	32 s
+pink	33 s
+pink	33 s
+blue	33 s
+blue	33 s
+pink	34 s
+pink	34 s
+purple	34 s
+purple	35 s
+orange	35 s
+orange	35 s
+black	35 s
+black	35 s
+green	36 s
+green	36 s
+yellow	36 s
+yellow	37 s
+red	37 s
+red	37 s
+white	37 s
+white	38 s
+red	38 s
+red	38 s
+yellow	38 s
+yellow	39 s
+green	39 s
+
+Fixed Time:
+green	39 s
+green	44 s
+green	44 s
+black	44 s
+black	44 s
+pink	45 s
+pink	45 s
+blue	45 s
+blue	45 s
 
 Extinction:
-red	10 s
-red	10 s
-yellow	10 s
-yellow	11 s
-red	12 s
-white	12 s
-orange	12 s
-black	13 s
-pink	13 s
-purple	13 s
-purple	13 s
-black	14 s
-black	14 s
-green	14 s
-green	14 s
-yellow	15 s
-yellow	15 s
-red	15 s
-red	15 s
-white	16 s
-white	16 s
-blue	17 s
-blue	17 s
-pink	17 s
-pink	17 s
-purple	18 s
-purple	18 s
-black	18 s
-black	18 s
-orange	19 s
-orange	19 s
-green	19 s
-green	19 s
+blue	49 s
+blue	49 s
+pink	50 s
+pink	50 s
+green	52 s
+black	52 s
+red	52 s
+yellow	53 s
+white	53 s
 
 
 =================================================
-Fixed Time Module
+VR Module
 =================================================
-Time Interval: 1
+VR: 3
 Execution Time: 0.166666666666667 minutes
-Score: 9
+Target Button: pink
+Score: 5
 Button		Response Count		Response Rate(responses per minute)
-blue		7			42
-green		5			30
+blue		1			6
+green		1			6
 yellow		2			12
-pink		3			18
-black		7			42
-red		2			12
+pink		21			126
+black		5			30
+red		3			18
+purple		3			18
+orange		3			18
+white		2			12
+
+=================================================
+DRO Module
+=================================================
+Time Interval: 3
+Execution Time: 0.166666666666667 minutes
+Target Button: yellow
+Score: 3
+Button		Response Count		Response Rate(responses per minute)
+blue		5			30
+green		2			12
+yellow		0			0
+pink		30			180
+black		2			12
+red		0			0
+purple		2			12
+orange		2			12
+white		0			0
+
+=================================================
+DROVR Module
+=================================================
+VR: 3
+Time Inteval: 3
+Execution Time: 0.166666666666667 minutes
+Target Button: blue
+Score: 2
+Button		Response Count		Response Rate(responses per minute)
+blue		4			24
+green		3			18
+yellow		4			24
+pink		11			66
+black		6			36
+red		4			24
+purple		0			0
+orange		1			6
+white		2			12
+
+=================================================
+Penalty Module
+=================================================
+
+Execution Time: 0.166666666666667 minutes
+Target Button: purple
+Score: -4
+Button		Response Count		Response Rate(responses per minute)
+blue		6			36
+green		3			18
+yellow		4			24
+pink		8			48
+black		2			12
+red		4			24
 purple		4			24
 orange		2			12
 white		2			12
 
 =================================================
+Fixed Time Module
+=================================================
+Time Interval: 2
+Execution Time: 0.166666666666667 minutes
+Score: 4
+Button		Response Count		Response Rate(responses per minute)
+blue		2			12
+green		3			18
+yellow		0			0
+pink		2			12
+black		2			12
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
 Extinction Module
 =================================================
 
-Execution Time: 0.166666666666667 minutes
+Execution Time: 0.0666666666666667 minutes
 Score: 0
 Button		Response Count		Response Rate(responses per minute)
-blue		2			12
-green		4			24
-yellow		4			24
-pink		3			18
-black		5			30
-red		5			30
-purple		4			24
-orange		3			18
-white		3			18
+blue		2			30
+green		1			15
+yellow		1			15
+pink		2			30
+black		1			15
+red		1			15
+purple		0			0
+orange		0			0
+white		1			15

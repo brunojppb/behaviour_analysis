@@ -22,6 +22,8 @@ public class SessionManager : MonoBehaviour {
 	public GameObject extinction;
 	public GameObject penalty;
 
+	public GameObject EndOfSessionPanel;
+
 	//User data
 	public InputField participantName;
 	public Text score;
@@ -214,6 +216,10 @@ public class SessionManager : MonoBehaviour {
 		//write each module
 		foreach(BaseModule module in modules)
 			module.OutputData("result.txt");
+
+		//show the end of the session panel
+		//and let the user exit the program or restart
+		this.EndOfSessionPanel.SetActive (true);
 	}
 
 
