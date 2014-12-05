@@ -13,6 +13,7 @@ public class SessionManager : MonoBehaviour {
 	public PanelExtinctionManager extinctionManager;
 	public PanelFixedTimeManager fixedTimeManager;
 	public PanelPenaltyManager penaltyManager;
+	public PanelPenaltyVRManager penaltyVRManager;
 
 	//PANEL GAMEOBJECTS
 	public GameObject variableRatio;
@@ -21,8 +22,11 @@ public class SessionManager : MonoBehaviour {
 	public GameObject fixedTime;
 	public GameObject extinction;
 	public GameObject penalty;
+	public GameObject penaltyVR;
 
 	public GameObject EndOfSessionPanel;
+	public GameObject EndOfSessionResetButton;
+	public GameObject EndOfSessionQuitButton;
 
 	//User data
 	public InputField participantName;
@@ -152,9 +156,29 @@ public class SessionManager : MonoBehaviour {
 
 			this.modules.Add(penaltyModule);
 		}
-		//........
 
+		//=================================================
+		//Seventh Module - Penalty + VR
+		//================================================
+		if (penaltyVR.activeSelf) {
+			int execTime = int.Parse(this.penaltyVRManager.executionTime.text.ToString());
+			int order = int.Parse(this.penaltyVRManager.order.text.ToString());
+			string targetButton = this.penaltyVRManager.ButtonSelected;
+			int vr = int.Parse(this.penaltyVRManager.variableRatio.text.ToString());
+
+			PenaltyVRModule penaltyVRModule = this.penaltyVRManager.gameObject.AddComponent("PenaltyVRModule") as PenaltyVRModule;
+			penaltyVRModule.ExecutionTime = execTime;
+			penaltyVRModule.Order = order;
+			penaltyVRModule.TargetButton = targetButton;
+			penaltyVRModule.VariableRatio = vr;
+
+			this.modules.Add(penaltyVRModule);
+
+		}
+
+		//======================================================
 		//after process each module
+		//======================================================
 		//sort them to execute following the order
 		this.modules.Sort ();
 
@@ -163,7 +187,7 @@ public class SessionManager : MonoBehaviour {
 		foreach (BaseModule m in this.modules)
 			this.sessionTime += m.ExecutionTime;
 
-		//initialize the Log
+		//initialize the Log string
 		this.sessionLog = "\nEVENT RECORDING START\n";
 
 		//start a Coroutine to decrement the session time and generate a log
@@ -192,7 +216,7 @@ public class SessionManager : MonoBehaviour {
 			}
 
 			//execute the module using its own execution time
-			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime);
+			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime + 1);
 
 			//stop specialized functions for each module
 			actualModule.StopModule();
@@ -219,7 +243,7 @@ public class SessionManager : MonoBehaviour {
 
 		//show the end of the session panel
 		//and let the user exit the program or restart
-		this.EndOfSessionPanel.SetActive (true);
+		StartCoroutine ("ShowEndOfTheSessionPanel");
 	}
 
 
@@ -258,6 +282,10 @@ public class SessionManager : MonoBehaviour {
 		this.sessionLog += buttonName + "\t" + this.actualSessionTime + " s\n";
 	}
 
+	//===================================================================
+	//Trigger a session timer to catch each button clicked and the time
+	// it was clicked
+	//===================================================================
 	IEnumerator SessionTimer(){
 		this.actualSessionTime = 0;
 		while (this.actualSessionTime < this.sessionTime) {
@@ -267,15 +295,31 @@ public class SessionManager : MonoBehaviour {
 	}
 
 	void outputSesionData(string filename){
+
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			string text = "";
-			text += "Participant Name: " + this.participantName.text.ToString();
+			text += "\nParticipant Name: " + this.participantName.text.ToString();
 			text += "\nTotal Score: " + this.score.text.ToString();
+			text += "\nSession Time: " + this.sessionTime;
 			text += "\nSession LOG:";
+			text = text.Replace("\n", System.Environment.NewLine);
+			this.sessionLog = this.sessionLog.Replace("\n", System.Environment.NewLine);
 			file.WriteLine(text);
 			file.WriteLine(this.sessionLog);
-
 		}
+	}
+
+	//===================================================================
+	//Show the end of session panel and than wait for 3 seconds
+	//to show the buttons. (prevent the user to click on them by mistake)
+	//===================================================================
+	IEnumerator ShowEndOfTheSessionPanel(){
+		this.EndOfSessionPanel.SetActive (true);
+		this.EndOfSessionResetButton.SetActive (false);
+		this.EndOfSessionQuitButton.SetActive (false);
+		yield return new WaitForSeconds (3);
+		this.EndOfSessionResetButton.SetActive (true);
+		this.EndOfSessionQuitButton.SetActive (true);
 	}
 }
 

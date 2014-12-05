@@ -21,7 +21,7 @@ public class DROVRModule : BaseModule {
 //	}
 
 	//===========================================
-	//DRO Module Variables
+	//VR Module Variables
 	//===========================================
 	private string targetButton;
 	public string TargetButton{
@@ -142,14 +142,15 @@ public class DROVRModule : BaseModule {
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
+			text = text.Replace("\n", System.Environment.NewLine);
 			file.WriteLine (text);
 			string tableTitle = "Button\t\tResponse Count\t\tResponse Rate(responses per minute)";
+			tableTitle = tableTitle.Replace("\n", System.Environment.NewLine);
 			file.WriteLine (tableTitle);
 			foreach(string key in this.ButtonCount.Keys){
-				file.WriteLine(key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes);
-				//				file.WriteLine("\nButton: " + key);
-				//				file.WriteLine("Response Count: " + this.ButtonCount[key]);
-				//				file.WriteLine("Response Rate: " + this.ButtonCount[key] / timeInMinutes + " responses per minute");
+				string newLine = key + "\t\t" + this.ButtonCount[key] + "\t\t\t" + this.ButtonCount[key] / timeInMinutes;
+				newLine = newLine.Replace("\n", System.Environment.NewLine);
+				file.WriteLine(newLine);
 			}
 			
 		}

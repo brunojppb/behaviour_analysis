@@ -3,13 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-public class PenaltyModule : BaseModule {
+public class PenaltyVRModule : BaseModule {
 
 	private string targetButton;
 	public string TargetButton{
 		get { return targetButton; }
 		set { targetButton = value; }
 	}
+	
+	private int variableRatio;
+	public int VariableRatio{
+		get { return variableRatio; }
+		set { variableRatio = value; }
+	}
+	
+	//random number between VariableRatio-2 and VariableRatio+2
+	private int randomVariation;
+	private int clickCount;
 
 	public override void StartModule (){ 
 		//initialize the button counter
@@ -22,35 +32,62 @@ public class PenaltyModule : BaseModule {
 		this.ButtonCount.Add ("red", 0);
 		this.ButtonCount.Add ("purple", 0);
 		this.ButtonCount.Add ("orange", 0);
-		this.ButtonCount.Add ("white", 0); 
+		this.ButtonCount.Add ("white", 0);
+		
+		randomVariation = this.generateRandomVR();
+		clickCount = 0;
+		Debug.Log ("Random Number: " + this.randomVariation);
+		Debug.Log ("Target Button: " + this.TargetButton);
+
 	}
 
-	public override void StopModule (){ 
-		Debug.Log ("Penalty Module stoped"); 
-	}
-
-	public override void ButtonClicked (string buttonColor){ 
+	public override void ButtonClicked (string buttonColor){
 		//search for the button...
 		//Debug.Log ("button clicked");
 		if (this.ButtonCount.ContainsKey (buttonColor)) {
 			//Debug.Log ("button Found");
 			//...increment the counter
 			this.ButtonCount[buttonColor]++;
-			//if the user clicks on the target button
+			//if the user achieve the target button...
 			if(this.targetButton == buttonColor){
-					//... he loses 1 point
-					this.Score--;
+
+				//... he loses 1 point ( Penalty Module Logic)
+				this.Score--;
+
+				if(clickCount == randomVariation){
+					//... he earns 1 point
+					this.Score++;
+					//and the click counter reset
+					this.clickCount = 0;
+					//generates a new random number
+					this.randomVariation = this.generateRandomVR();
+					Debug.Log ("Score: " + this.Score);
+					Debug.Log ("random variation: " + this.randomVariation);
+				}
+				else{
+					//increment the click counter
+					this.clickCount++;
+				}
 			}
-		} 
+		}
 	}
 
-	public override void OutputData (string filename){ 
+	private int generateRandomVR(){
+		return Random.Range (this.variableRatio - 2, (this.variableRatio + 2) + 1);
+	}
+
+	public override void StopModule (){ 
+		Debug.Log ("Penalty VR Module Stoped"); 
+	}
+
+	public override void OutputData(string filename){
 		//Output the computed data when the module ends;
 		double timeInMinutes = this.ExecutionTime/60.0;
 		string text = "";
 		text += "\n=================================================\n";
-		text += "Penalty Module";
+		text += "Penalty + VR Module";
 		text += "\n=================================================\n";
+		text += "VR: " + this.VariableRatio;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
 		text += "\nScore: " + this.Score;
@@ -73,6 +110,7 @@ public class PenaltyModule : BaseModule {
 
 	public override string ToString ()
 	{
-		return "Penalty";
+		return "Penalty + VR";
 	}
+
 }
