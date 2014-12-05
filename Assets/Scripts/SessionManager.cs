@@ -28,6 +28,11 @@ public class SessionManager : MonoBehaviour {
 	public GameObject EndOfSessionResetButton;
 	public GameObject EndOfSessionQuitButton;
 
+	//Sounds
+	public AudioSource buttonClick;
+	public AudioSource getPoint;
+	public AudioSource losePoint;
+
 	//User data
 	public InputField participantName;
 	public Text score;
@@ -41,6 +46,7 @@ public class SessionManager : MonoBehaviour {
 	//Total time of the session to generate a log
 	private int sessionTime;
 	private int actualSessionTime;
+	private int actualScore;
 
 	//Log generated after each click
 	private string sessionLog;
@@ -269,10 +275,12 @@ public class SessionManager : MonoBehaviour {
 			if(scoreSum > actualScore){
 				this.score.text = scoreSum.ToString ();
 				//TODO - Call the score animation and sound to earn points
+				this.getPoint.Play();
 			}
 			else if(scoreSum < actualScore){
 				this.score.text = scoreSum.ToString ();
 				//TODO - Call the score animation and sound to lose points
+				this.losePoint.Play();
 			}
 				
 		}
@@ -280,6 +288,7 @@ public class SessionManager : MonoBehaviour {
 
 	void ButtonClickedOnSession(string buttonName){
 		this.sessionLog += buttonName + "\t" + this.actualSessionTime + " s\n";
+		this.buttonClick.Play ();
 	}
 
 	//===================================================================

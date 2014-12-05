@@ -274,3 +274,177 @@ red		2			12
 purple		2			12
 orange		1			6
 white		1			6
+
+Participant Name: Participant
+Total Score: -35
+Session Time: 15
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	5 s
+blue	5 s
+
+Penalty:
+blue	6 s
+blue	6 s
+blue	6 s
+blue	6 s
+blue	7 s
+blue	7 s
+blue	7 s
+blue	7 s
+blue	8 s
+blue	8 s
+blue	8 s
+blue	9 s
+blue	9 s
+blue	9 s
+blue	9 s
+blue	10 s
+blue	10 s
+blue	10 s
+blue	11 s
+blue	11 s
+blue	11 s
+blue	11 s
+blue	11 s
+blue	12 s
+blue	12 s
+blue	12 s
+blue	12 s
+blue	13 s
+green	14 s
+green	14 s
+blue	14 s
+blue	14 s
+blue	15 s
+blue	15 s
+blue	15 s
+blue	15 s
+blue	15 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.0833333333333333 minutes
+Target Button: blue
+Score: 0
+Button		Response Count		Response Rate(responses per minute)
+blue		2			24
+green		0			0
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
+Penalty Module
+=================================================
+
+Execution Time: 0.166666666666667 minutes
+Target Button: blue
+Score: -35
+Button		Response Count		Response Rate(responses per minute)
+blue		35			210
+green		2			12
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+Participant Name: Participant
+Total Score: -2
+Session Time: 10
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	1 s
+blue	1 s
+blue	1 s
+blue	1 s
+blue	2 s
+blue	2 s
+green	2 s
+green	3 s
+green	3 s
+green	3 s
+blue	3 s
+blue	3 s
+blue	4 s
+blue	4 s
+blue	4 s
+blue	4 s
+blue	4 s
+blue	5 s
+blue	5 s
+blue	5 s
+blue	5 s
+blue	5 s
+blue	5 s
+
+Penalty:
+blue	6 s
+blue	6 s
+blue	6 s
+blue	7 s
+blue	7 s
+green	8 s
+green	8 s
+green	8 s
+black	9 s
+pink	9 s
+pink	10 s
+pink	10 s
+yellow	10 s
+yellow	10 s
+red	10 s
+red	10 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 5
+Execution Time: 0.0833333333333333 minutes
+Target Button: blue
+Score: 3
+Button		Response Count		Response Rate(responses per minute)
+blue		19			228
+green		4			48
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
+Penalty Module
+=================================================
+
+Execution Time: 0.0833333333333333 minutes
+Target Button: blue
+Score: -5
+Button		Response Count		Response Rate(responses per minute)
+blue		5			60
+green		3			36
+yellow		2			24
+pink		3			36
+black		1			12
+red		2			24
+purple		0			0
+orange		0			0
+white		0			0
