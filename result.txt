@@ -448,3 +448,112 @@ red		2			24
 purple		0			0
 orange		0			0
 white		0			0
+
+Participant Name: bruno
+Total Score: 7
+Session Time: 19
+Session LOG:
+
+EVENT RECORDING START
+
+DRO+VR:
+black	1 s
+black	2 s
+green	3 s
+green	4 s
+
+Fixed Time:
+blue	5 s
+blue	5 s
+blue	5 s
+pink	5 s
+pink	6 s
+pink	6 s
+black	7 s
+black	7 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	8 s
+pink	9 s
+purple	9 s
+purple	10 s
+orange	10 s
+orange	11 s
+orange	11 s
+white	12 s
+white	12 s
+white	12 s
+red	13 s
+red	13 s
+red	13 s
+red	14 s
+red	14 s
+red	14 s
+red	15 s
+red	15 s
+
+Variable Ratio:
+yellow	16 s
+yellow	16 s
+green	17 s
+green	18 s
+blue	18 s
+blue	19 s
+blue	19 s
+blue	19 s
+
+
+=================================================
+DROVR Module
+=================================================
+VR: 3
+Time Inteval: 2
+Execution Time: 0.0666666666666667 minutes
+Target Button: green
+Score: 4
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		2			30
+yellow		0			0
+pink		0			0
+black		2			30
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
+Fixed Time Module
+=================================================
+Time Interval: 4
+Execution Time: 0.166666666666667 minutes
+Score: 2
+Button		Response Count		Response Rate(responses per minute)
+blue		3			18
+green		0			0
+yellow		0			0
+pink		8			48
+black		2			12
+red		8			48
+purple		2			12
+orange		3			18
+white		3			18
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.0833333333333333 minutes
+Target Button: blue
+Score: 1
+Button		Response Count		Response Rate(responses per minute)
+blue		4			48
+green		2			24
+yellow		2			24
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0

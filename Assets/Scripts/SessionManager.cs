@@ -274,12 +274,12 @@ public class SessionManager : MonoBehaviour {
 
 			if(scoreSum > actualScore){
 				this.score.text = scoreSum.ToString ();
-				//TODO - Call the score animation and sound to earn points
+				//Call the score animation and sound to earn points
 				this.getPoint.Play();
 			}
 			else if(scoreSum < actualScore){
 				this.score.text = scoreSum.ToString ();
-				//TODO - Call the score animation and sound to lose points
+				//Call the score animation and sound to lose points
 				this.losePoint.Play();
 			}
 				
