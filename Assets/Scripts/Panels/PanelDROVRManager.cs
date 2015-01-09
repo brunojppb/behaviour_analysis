@@ -10,6 +10,8 @@ public class PanelDROVRManager : MonoBehaviour {
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
+	public Image buttonImage;
+	public Sprite[] buttonSprites;
 
 	private string targetButton;
 	public string TargetButton{
@@ -18,15 +20,23 @@ public class PanelDROVRManager : MonoBehaviour {
 	}
 
 
-	public void selectButton(string buttonColor){
-		this.targetButton = buttonColor;
-		this.toggleTargetButtonMenu();
-	}
-
-
 	public void toggleTargetButtonMenu(){
 		bool isHidden = targetButtonAnimator.GetBool ("isHidden");
 		targetButtonAnimator.SetBool ("isHidden", !isHidden);
+	}
+
+	public void selectButton(string buttonColor){
+		this.targetButton = buttonColor;
+		this.toggleTargetButtonMenu();
+		//change the button color to show a feedback to user
+		foreach (Sprite s in this.buttonSprites) {
+			if(s.ToString().Contains(buttonColor))
+				this.buttonImage.overrideSprite = s;
+		}
+	}
+
+	void Start(){
+		this.targetButton = "black";
 	}
 
 }

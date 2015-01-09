@@ -35,6 +35,8 @@ public class SessionManager : MonoBehaviour {
 
 	//User data
 	public InputField participantName;
+	public InputField sessionNumber;
+	public InputField numberOfLoops;
 	public Text score;
 
 	//list of buttons that will perform actions based on modules
@@ -240,12 +242,13 @@ public class SessionManager : MonoBehaviour {
 		Debug.Log("End of the session...");
 		//write in file the results
 
-		//write session information
-		this.outputSesionData("result.txt");
+		//write session information on file with the participant name and session number
+		string fileName = string.Format("{0}_session_{1}.txt", participantName.text, sessionNumber.text);
+		this.outputSesionData(fileName);
 
 		//write each module
 		foreach(BaseModule module in modules)
-			module.OutputData("result.txt");
+			module.OutputData(fileName);
 
 		//show the end of the session panel
 		//and let the user exit the program or restart

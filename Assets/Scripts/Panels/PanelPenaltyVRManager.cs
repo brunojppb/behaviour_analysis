@@ -9,6 +9,8 @@ public class PanelPenaltyVRManager : MonoBehaviour {
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
+	public Image buttonImage;
+	public Sprite[] buttonSprites;
 	
 	private string buttonSelected;
 	public string ButtonSelected{
@@ -24,5 +26,14 @@ public class PanelPenaltyVRManager : MonoBehaviour {
 	public void selectButton(string buttonColor){
 		this.ButtonSelected = buttonColor;
 		this.toggleVrTargetButtonDropDown();
+		//change the button color to show a feedback to user
+		foreach (Sprite s in this.buttonSprites) {
+			if(s.ToString().Contains(buttonColor))
+				this.buttonImage.overrideSprite = s;
+		}
+	}
+
+	void Start(){
+		this.ButtonSelected = "black";
 	}
 }

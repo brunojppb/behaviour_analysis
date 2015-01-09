@@ -557,3 +557,266 @@ red		0			0
 purple		0			0
 orange		0			0
 white		0			0
+
+Participant Name: Bruno
+Total Score: 0
+Session Time: 5
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	1 s
+green	2 s
+yellow	2 s
+yellow	2 s
+yellow	2 s
+red	3 s
+red	3 s
+red	3 s
+
+DRO:
+black	4 s
+black	4 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+yellow	5 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.05 minutes
+Target Button: yellow
+Score: 0
+Button		Response Count		Response Rate(responses per minute)
+blue		1			20
+green		1			20
+yellow		3			60
+pink		0			0
+black		0			0
+red		3			60
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
+DRO Module
+=================================================
+Time Interval: 3
+Execution Time: 0.0333333333333333 minutes
+Target Button: green
+Score: 1
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		0			0
+yellow		13			390
+pink		0			0
+black		2			60
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+Participant Name: Brnuo
+Total Score: 3
+Session Time: 2
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	1 s
+blue	1 s
+blue	1 s
+blue	2 s
+blue	2 s
+blue	2 s
+blue	2 s
+blue	2 s
+blue	2 s
+blue	2 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 2
+Execution Time: 0.0333333333333333 minutes
+Target Button: blue
+Score: 3
+Button		Response Count		Response Rate(responses per minute)
+blue		10			300
+green		0			0
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+Participant Name: Bruno
+Total Score: 1
+Session Time: 4
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	1 s
+pink	1 s
+black	1 s
+green	2 s
+yellow	2 s
+
+DRO:
+red	3 s
+purple	3 s
+purple	3 s
+orange	3 s
+orange	4 s
+white	4 s
+white	4 s
+pink	4 s
+pink	4 s
+blue	4 s
+blue	4 s
+blue	4 s
+pink	4 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 2
+Execution Time: 0.0333333333333333 minutes
+Target Button: blue
+Score: 0
+Button		Response Count		Response Rate(responses per minute)
+blue		1			30
+green		1			30
+yellow		1			30
+pink		1			30
+black		1			30
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+=================================================
+DRO Module
+=================================================
+Time Interval: 2
+Execution Time: 0.0333333333333333 minutes
+Target Button: green
+Score: 1
+Button		Response Count		Response Rate(responses per minute)
+blue		3			90
+green		0			0
+yellow		0			0
+pink		3			90
+black		0			0
+red		1			30
+purple		2			60
+orange		2			60
+white		2			60
+
+Participant Name: 2weqwe
+Total Score: 13
+Session Time: 10
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+black	1 s
+black	2 s
+black	2 s
+black	2 s
+black	2 s
+black	2 s
+black	2 s
+black	2 s
+black	2 s
+black	3 s
+black	3 s
+black	3 s
+black	3 s
+black	3 s
+black	3 s
+black	3 s
+black	4 s
+black	4 s
+black	4 s
+black	4 s
+black	4 s
+black	4 s
+black	4 s
+black	5 s
+black	5 s
+black	5 s
+black	5 s
+black	5 s
+black	5 s
+black	5 s
+black	6 s
+black	6 s
+black	6 s
+black	6 s
+black	6 s
+black	6 s
+black	6 s
+black	7 s
+black	7 s
+black	7 s
+black	7 s
+black	7 s
+black	7 s
+black	7 s
+black	8 s
+black	8 s
+black	8 s
+black	8 s
+black	8 s
+black	8 s
+black	9 s
+black	9 s
+black	9 s
+black	9 s
+black	9 s
+black	9 s
+black	10 s
+black	10 s
+green	10 s
+green	10 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.166666666666667 minutes
+Target Button: black
+Score: 13
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		2			12
+yellow		0			0
+pink		0			0
+black		58			348
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0

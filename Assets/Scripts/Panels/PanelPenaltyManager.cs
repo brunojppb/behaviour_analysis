@@ -7,6 +7,8 @@ public class PanelPenaltyManager : MonoBehaviour {
 	public Animator targetButtonDropDown;
 	public InputField executionTime;
 	public InputField order;
+	public Image buttonImage;
+	public Sprite[] buttonSprites;
 
 	private string targetButton;
 	public string TargetButton{
@@ -22,5 +24,14 @@ public class PanelPenaltyManager : MonoBehaviour {
 	public void selectButton(string buttonColor){
 		this.targetButton = buttonColor;
 		this.toggleVrTargetButtonDropDown();
+		//change the button color to show a feedback to user
+		foreach (Sprite s in this.buttonSprites) {
+			if(s.ToString().Contains(buttonColor))
+				this.buttonImage.overrideSprite = s;
+		}
+	}
+
+	void Start(){
+		this.targetButton = "black";
 	}
 }
