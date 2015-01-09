@@ -47,7 +47,7 @@ public class SessionManager : MonoBehaviour {
 
 	//Total time of the session to generate a log
 	private int sessionTime;
-	private int actualSessionTime;
+	private float actualSessionTime;
 	private int actualScore;
 
 	//Log generated after each click
@@ -243,7 +243,7 @@ public class SessionManager : MonoBehaviour {
 		//write in file the results
 
 		//write session information on file with the participant name and session number
-		string fileName = string.Format("{0}_session_{1}.txt", participantName.text, sessionNumber.text);
+		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text, participantName.text);
 		this.outputSesionData(fileName);
 
 		//write each module
@@ -290,7 +290,8 @@ public class SessionManager : MonoBehaviour {
 	}
 
 	void ButtonClickedOnSession(string buttonName){
-		this.sessionLog += buttonName + "\t" + this.actualSessionTime + " s\n";
+		this.sessionLog += buttonName + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+		//button sound
 		this.buttonClick.Play ();
 	}
 
@@ -301,8 +302,9 @@ public class SessionManager : MonoBehaviour {
 	IEnumerator SessionTimer(){
 		this.actualSessionTime = 0;
 		while (this.actualSessionTime < this.sessionTime) {
-			yield return new WaitForSeconds(1);
-			this.actualSessionTime++;
+			yield return new WaitForSeconds(0.1f);
+			this.actualSessionTime += 0.1f;
+
 		}
 	}
 
@@ -311,8 +313,9 @@ public class SessionManager : MonoBehaviour {
 		using (StreamWriter file = new StreamWriter (filename, true)) {
 			string text = "";
 			text += "\nParticipant Name: " + this.participantName.text.ToString();
-			text += "\nTotal Score: " + this.score.text.ToString();
-			text += "\nSession Time: " + this.sessionTime;
+			text += "\nSession number: " + this.sessionNumber.text.ToString();
+			text += "\nTotal Score: " + this.score.text.ToString() + "point(s)";
+			text += "\nSession Time: " + this.sessionTime + "seconds";
 			text += "\nSession LOG:";
 			text = text.Replace("\n", System.Environment.NewLine);
 			this.sessionLog = this.sessionLog.Replace("\n", System.Environment.NewLine);
