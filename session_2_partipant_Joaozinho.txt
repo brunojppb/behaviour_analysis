@@ -1,0 +1,73 @@
+
+Participant Name: Joaozinho
+Session number: 2
+Total Score: 3point(s)
+Session Time: 5seconds
+Session LOG:
+
+EVENT RECORDING START
+
+LOOP 1:
+
+Module: Variable Ratio:
+blue	0.7 s
+blue	0.8 s
+blue	1.0 s
+blue	1.1 s
+blue	1.2 s
+blue	1.3 s
+blue	1.4 s
+blue	1.6 s
+green	1.9 s
+green	2.1 s
+black	2.4 s
+pink	2.7 s
+pink	2.8 s
+pink	3.0 s
+pink	3.1 s
+pink	3.2 s
+pink	3.3 s
+black	3.8 s
+green	4.0 s
+white	4.9 s
+orange	5.1 s
+LOOP 2:
+
+Module: Variable Ratio:
+black	5.1 s
+green	5.1 s
+yellow	5.1 s
+red	5.1 s
+purple	5.1 s
+red	5.1 s
+black	5.1 s
+orange	5.1 s
+green	5.1 s
+blue	5.1 s
+pink	5.1 s
+pink	5.1 s
+pink	5.1 s
+pink	5.1 s
+black	5.1 s
+black	5.1 s
+orange	5.1 s
+orange	5.1 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.0833333333333333 minutes
+Target Button: pink
+Score: 3
+Button		Response Count		Response Rate(responses per minute)
+blue		1			12
+green		2			24
+yellow		1			12
+pink		4			48
+black		4			48
+red		2			24
+purple		1			12
+orange		3			36
+white		0			0

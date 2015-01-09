@@ -36,8 +36,11 @@ public class SessionManager : MonoBehaviour {
 	//User data
 	public InputField participantName;
 	public InputField sessionNumber;
-	public InputField numberOfLoops;
+	public InputField numberOfLoopsInput;
 	public Text score;
+
+	//number of loops the program will execute
+	private int numberOfLoops;
 
 	//list of buttons that will perform actions based on modules
 	public Button[] buttons;
@@ -196,59 +199,72 @@ public class SessionManager : MonoBehaviour {
 			this.sessionTime += m.ExecutionTime;
 
 		//initialize the Log string
-		this.sessionLog = "\nEVENT RECORDING START\n";
-
-		//start a Coroutine to decrement the session time and generate a log
-		StartCoroutine ("SessionTimer");
+		this.sessionLog = "\nEVENT RECORDING START\n\n";
 
 		//start a coroutine to iterate each module with its own time
 		StartCoroutine("ExecuteModules");
 	}
 
 	IEnumerator ExecuteModules(){
-		int moduleIndex = 0;
-		while (moduleIndex < this.modules.Count) {
-			BaseModule actualModule = modules[moduleIndex];
-			Debug.Log("Module " + actualModule.ToString() + " Running...");
-			Debug.Log("Exec Time: " + actualModule.ExecutionTime);
+		//begin the output file
+		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text, participantName.text);
+		this.outputParticipantData (fileName);
 
-			//start specialized functions for each module
-			actualModule.StartModule();
+		//setting up the number of loops the program will execut
+		this.numberOfLoops = this.numberOfLoopsInput.text == "" ? 1 : int.Parse (this.numberOfLoopsInput.text);
 
-			//before to add listeners, write on the Log the actual module
-			this.sessionLog += "\n" + actualModule.ToString() + ":\n";
+		for (int i = 0; i < numberOfLoops; i++) {
+			//start a Coroutine to decrement the session time and generate a log
+			StopCoroutine("SessionTimer");
+			StartCoroutine ("SessionTimer");
 
-			//add a callback method to each button based on the module
-			foreach(Button button in this.buttons){
-				this.addListener(button, actualModule);
+			this.sessionLog += string.Format("\nLOOP {0}:\n\n", i+1);
+			int moduleIndex = 0;
+			while (moduleIndex < this.modules.Count) {
+				BaseModule actualModule = modules[moduleIndex];
+				Debug.Log("Module " + actualModule.ToString() + " Running...");
+				Debug.Log("Exec Time: " + actualModule.ExecutionTime);
+				
+				//start specialized functions for each module
+				actualModule.StartModule();
+				
+				//before to add listeners, write on the Log the actual module
+				this.sessionLog +=  string.Format("Module: {0}:\n", actualModule.ToString());
+				
+				//add a callback method to each button based on the module
+				foreach(Button button in this.buttons){
+					this.addListener(button, actualModule);
+				}
+				
+				//execute the module using its own execution time
+				yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime + 1);
+				
+				//stop specialized functions for each module
+				actualModule.StopModule();
+				
+				//remove all callbacks from the buttons
+				foreach(Button button in this.buttons){
+					button.onClick.RemoveAllListeners();
+				}
+
+				//write on the file the results
+				//write loop information on file
+				this.outputSesionData(fileName);
+				
+				//write each module on the log
+				foreach(BaseModule module in modules)
+					module.OutputData(fileName);
+				
+				//jump for the next module
+				moduleIndex++;
 			}
-
-			//execute the module using its own execution time
-			yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime + 1);
-
-			//stop specialized functions for each module
-			actualModule.StopModule();
-
-			//remove all callbacks from the buttons
-			foreach(Button button in this.buttons){
-				button.onClick.RemoveAllListeners();
-			}
-
-			//jump for the next module
-			moduleIndex++;
 		}
+
+		//output the total session information
+
 
 		//End of the session
 		Debug.Log("End of the session...");
-		//write in file the results
-
-		//write session information on file with the participant name and session number
-		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text, participantName.text);
-		this.outputSesionData(fileName);
-
-		//write each module
-		foreach(BaseModule module in modules)
-			module.OutputData(fileName);
 
 		//show the end of the session panel
 		//and let the user exit the program or restart
@@ -311,16 +327,40 @@ public class SessionManager : MonoBehaviour {
 	void outputSesionData(string filename){
 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
+			this.sessionLog = this.sessionLog.Replace("\n", System.Environment.NewLine);
+			file.WriteLine(this.sessionLog);
+		}
+	}
+
+	void outputParticipantData(string filename){
+		using (StreamWriter file = new StreamWriter (filename, true)) {
 			string text = "";
 			text += "\nParticipant Name: " + this.participantName.text.ToString();
 			text += "\nSession number: " + this.sessionNumber.text.ToString();
-			text += "\nTotal Score: " + this.score.text.ToString() + "point(s)";
-			text += "\nSession Time: " + this.sessionTime + "seconds";
-			text += "\nSession LOG:";
+			text += "\nTotal Score: " + this.score.text.ToString() + " point(s)";
+			text += "\nSession Time: " + this.sessionTime + " seconds";
+			text += "\nNumber of Loops: " + this.numberOfLoops;
+			text += "\n\nSession LOG:";
 			text = text.Replace("\n", System.Environment.NewLine);
-			this.sessionLog = this.sessionLog.Replace("\n", System.Environment.NewLine);
 			file.WriteLine(text);
-			file.WriteLine(this.sessionLog);
+		}
+	}
+
+	void outputTotalSessionInformation(string filename){
+		ModuleReport report = new ModuleReport ();
+		foreach (BaseModule module in modules) {
+			report.Score += module.Report.Score;
+			foreach(KeyValuePair<string, int> entry in module.ButtonCount){
+				report.ButtonCount[entry.Key] += entry.Value;
+			}
+		}
+
+		using (StreamWriter file = new StreamWriter (filename, true)) {
+			string text = "\n\n===============SESSION OUTPUT=======================\n\n";
+			text = "\nTotal Score: " + report.Score;
+			text += "";
+			text = text.Replace("\n", System.Environment.NewLine);
+			file.WriteLine(text);
 		}
 	}
 

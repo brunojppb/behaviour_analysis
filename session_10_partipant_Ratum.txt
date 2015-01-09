@@ -1,0 +1,75 @@
+
+Participant Name: Ratum
+Session number: 10
+Total Score: 1point(s)
+Session Time: 5seconds
+Session LOG:
+
+EVENT RECORDING START
+
+Variable Ratio:
+blue	0.8 s
+blue	1.0 s
+blue	1.1 s
+green	1.5 s
+green	1.6 s
+green	1.8 s
+green	1.9 s
+yellow	2.2 s
+yellow	2.4 s
+yellow	2.5 s
+yellow	2.6 s
+yellow	2.8 s
+yellow	2.9 s
+yellow	3.0 s
+yellow	3.1 s
+green	3.5 s
+green	3.6 s
+black	3.9 s
+black	4.0 s
+red	4.3 s
+red	4.4 s
+purple	4.7 s
+purple	4.8 s
+orange	5.1 s
+orange	5.1 s
+
+Variable Ratio:
+white	5.1 s
+white	5.1 s
+pink	5.1 s
+black	5.1 s
+blue	5.1 s
+blue	5.1 s
+blue	5.1 s
+green	5.1 s
+green	5.1 s
+black	5.1 s
+red	5.1 s
+red	5.1 s
+purple	5.1 s
+purple	5.1 s
+orange	5.1 s
+orange	5.1 s
+orange	5.1 s
+white	5.1 s
+pink	5.1 s
+
+
+=================================================
+VR Module
+=================================================
+VR: 3
+Execution Time: 0.0833333333333333 minutes
+Target Button: yellow
+Score: 1
+Button		Response Count		Response Rate(responses per minute)
+blue		3			36
+green		2			24
+yellow		0			0
+pink		2			24
+black		2			24
+red		2			24
+purple		2			24
+orange		3			36
+white		3			36

@@ -22,6 +22,12 @@ public class VariableRatioModule : BaseModule{
 	private int clickCount;
 
 	public override void StartModule(){
+
+		if (this.FirstTimeRunning) {
+			this.Report = new ModuleReport();
+			this.FirstTimeRunning = false;
+		}
+
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
 		this.ButtonCount.Add ("blue", 0);
@@ -35,14 +41,19 @@ public class VariableRatioModule : BaseModule{
 		this.ButtonCount.Add ("white", 0);
 
 
-
 		randomVariation = this.generateRandomVR();
 		clickCount = 0;
 		Debug.Log ("Random Number: " + this.randomVariation);
 		Debug.Log ("Target Button: " + this.TargetButton);
 	}
 
-	public override void StopModule(){}
+	public override void StopModule(){
+		this.Report.Score += this.Score;
+		//loop through the buttons to sum total cliks
+		foreach(KeyValuePair<string, int> entry in this.ButtonCount){
+			this.Report.ButtonCount[entry.Key] += entry.Value;
+		}
+	}
 
 	public override void ButtonClicked (string buttonColor){
 		//search for the button...

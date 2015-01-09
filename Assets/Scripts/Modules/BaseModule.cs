@@ -15,6 +15,12 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 		set { executionTime = value; }
 	}
 
+	private bool firstTimeRunning = true;
+	public bool FirstTimeRunning{
+		get { return firstTimeRunning;}
+		set { firstTimeRunning = value;}
+	}
+
 	private int order;
 	public int Order{
 		get { return order; }
@@ -31,6 +37,12 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 	public Dictionary<string, int> ButtonCount{
 		get { return buttonCount; }
 		set { buttonCount = value; }
+	}
+
+	private ModuleReport report;
+	public ModuleReport Report{
+		get { return report; }
+		set { report = value; }
 	}
 
 	//Icomparable method
