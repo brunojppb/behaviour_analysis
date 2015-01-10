@@ -3,10 +3,16 @@ using System.Collections.Generic;
 
 public class ModuleReport {
 
-	private int score;
-	public int Score{
-		get { return score;}
-		set { score = value; }
+	private int earnedPoints;
+	public int EarnedPoints{
+		get { return earnedPoints;}
+		set { earnedPoints = value; }
+	}
+
+	private int lostPoints;
+	public int LostPoints{
+		get { return lostPoints;}
+		set { lostPoints = value; }
 	}
 
 	private int time;
@@ -22,7 +28,8 @@ public class ModuleReport {
 	}
 
 	public ModuleReport(){
-		this.score = 0;
+		this.earnedPoints = 0;
+		this.lostPoints = 0;
 		this.time = 0;
 
 		//initialize the button counter

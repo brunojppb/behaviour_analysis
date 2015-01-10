@@ -12,6 +12,15 @@ public class PenaltyModule : BaseModule {
 	}
 
 	public override void StartModule (){ 
+
+		this.Score = 0;
+		
+		if (this.Report == null)
+			this.Report = new ModuleReport();
+
+		this.Report.EarnedPoints = 0;
+		this.Report.LostPoints = 0;
+
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
 		this.ButtonCount.Add ("blue", 0);
@@ -25,8 +34,11 @@ public class PenaltyModule : BaseModule {
 		this.ButtonCount.Add ("white", 0); 
 	}
 
-	public override void StopModule (){ 
-		Debug.Log ("Penalty Module stoped"); 
+	public override void StopModule (){
+		//loop through the buttons to sum total cliks
+		foreach(string key in this.ButtonCount.Keys){
+			this.Report.ButtonCount[key] += this.ButtonCount[key];
+		}
 	}
 
 	public override void ButtonClicked (string buttonColor){ 
@@ -53,7 +65,9 @@ public class PenaltyModule : BaseModule {
 		text += "\n=================================================\n";
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
-		text += "\nScore: " + this.Score;
+		text += "\nEarned Points: " + this.Report.EarnedPoints;
+		text += "\nLost Points: " + this.Report.LostPoints;
+		text += "\nScore: " + this.Score;;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {

@@ -22,7 +22,15 @@ public class FixedTimeModule : BaseModule {
 	//================================================================
 	//Overwritten Methods
 	//================================================================
-	public override void StartModule (){ 
+	public override void StartModule (){
+
+		this.Score = 0;
+		
+		if (this.Report == null)
+			this.Report = new ModuleReport();
+
+		this.Report.EarnedPoints = 0;
+		this.Report.LostPoints = 0;
 
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
@@ -40,6 +48,11 @@ public class FixedTimeModule : BaseModule {
 	}
 	public override void StopModule (){ 
 		StopCoroutine ("DeliveryPoints");
+
+		//loop through the buttons to sum total cliks
+		foreach(string key in this.ButtonCount.Keys){
+			this.Report.ButtonCount[key] += this.ButtonCount[key];
+		}
 	}
 
 	public override void OutputData (string filename){
@@ -51,6 +64,8 @@ public class FixedTimeModule : BaseModule {
 		text += "\n=================================================\n";
 		text += "Time Interval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
+		text += "\nEarned Points: " + this.Report.EarnedPoints;
+		text += "\nLost Points: " + this.Report.LostPoints;
 		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 

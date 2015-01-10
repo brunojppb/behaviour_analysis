@@ -31,6 +31,9 @@ public class DROModule : BaseModule {
 		if (this.Report == null)
 			this.Report = new ModuleReport();
 
+		this.Report.EarnedPoints = 0;
+		this.Report.LostPoints = 0;
+
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
 		this.ButtonCount.Add ("blue", 0);
@@ -49,16 +52,9 @@ public class DROModule : BaseModule {
 	public override void StopModule(){
 		StopCoroutine ("DeliveryPoints");
 		//loop through the buttons to sum total cliks
-		this.Report.Score += this.Score;
-		string debug = "";
 		foreach(string key in this.ButtonCount.Keys){
 			this.Report.ButtonCount[key] += this.ButtonCount[key];
-			debug += "Key: " + key + " - Value: " + this.ButtonCount[key] + "\n";
 		}
-
-		Debug.Log (debug);
-
-
 	}
 
 
@@ -93,6 +89,8 @@ public class DROModule : BaseModule {
 		text += "Time Interval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
+		text += "\nEarned Points: " + this.Report.EarnedPoints;
+		text += "\nLost Points: " + this.Report.LostPoints;
 		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 

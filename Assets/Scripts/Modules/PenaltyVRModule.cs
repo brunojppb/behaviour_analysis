@@ -21,7 +21,16 @@ public class PenaltyVRModule : BaseModule {
 	private int randomVariation;
 	private int clickCount;
 
-	public override void StartModule (){ 
+	public override void StartModule (){
+
+		this.Score = 0;
+		
+		if (this.Report == null)
+			this.Report = new ModuleReport();
+
+		this.Report.EarnedPoints = 0;
+		this.Report.LostPoints = 0;
+
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
 		this.ButtonCount.Add ("blue", 0);
@@ -77,7 +86,10 @@ public class PenaltyVRModule : BaseModule {
 	}
 
 	public override void StopModule (){ 
-		Debug.Log ("Penalty VR Module Stoped"); 
+		//loop through the buttons to sum total cliks
+		foreach(string key in this.ButtonCount.Keys){
+			this.Report.ButtonCount[key] += this.ButtonCount[key];
+		}
 	}
 
 	public override void OutputData(string filename){
@@ -90,6 +102,8 @@ public class PenaltyVRModule : BaseModule {
 		text += "VR: " + this.VariableRatio;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
+		text += "\nEarned Points: " + this.Report.EarnedPoints;
+		text += "\nLost Points: " + this.Report.LostPoints;
 		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 

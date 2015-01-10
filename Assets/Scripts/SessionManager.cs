@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 public class SessionManager : MonoBehaviour {
 
 	//PANEL MODULES
+	[Header("Module Managers")]
 	public PanelVariableRatioManager variableRatioManager;
 	public PanelDROManager DROManager;
 	public PanelDROVRManager DROVRManager;
@@ -17,6 +18,7 @@ public class SessionManager : MonoBehaviour {
 	public PanelPenaltyVRManager penaltyVRManager;
 
 	//PANEL GAMEOBJECTS
+	[Header("Panel Objects")]
 	public GameObject variableRatio;
 	public GameObject DRO;
 	public GameObject DROVR;
@@ -29,11 +31,17 @@ public class SessionManager : MonoBehaviour {
 	public GameObject EndOfSessionResetButton;
 	public GameObject EndOfSessionQuitButton;
 
+	[Header("Points Animation")]
+	public GameObject pointAnimation;
+	public GameObject pointsPanel;
+
+	[Header("Sounds Effects")]
 	//Sounds
 	public AudioSource buttonClick;
 	public AudioSource getPoint;
 	public AudioSource losePoint;
 
+	[Header("User Input Objects")]
 	//User data
 	public InputField participantName;
 	public InputField sessionNumber;
@@ -42,6 +50,8 @@ public class SessionManager : MonoBehaviour {
 
 	//number of loops the program will execute
 	private int numberOfLoops;
+	private int EarnedPoints = 0;
+	private int lostPoints = 0;
 
 	//list of buttons that will perform actions based on modules
 	public Button[] buttons;
@@ -224,7 +234,7 @@ public class SessionManager : MonoBehaviour {
 			//start a Coroutine to decrement the session time and generate a log
 			StopCoroutine("SessionTimer");
 			StartCoroutine ("SessionTimer");
-			this.sessionLog += "\n\n=================================================\n";
+			this.sessionLog += "\n\n\n=================================================\n";
 			this.sessionLog += string.Format("LOOP {0}:", (i+1));
 			this.sessionLog += "\n==================================================\n\n";
 			int moduleIndex = 0;
@@ -246,7 +256,7 @@ public class SessionManager : MonoBehaviour {
 				}
 				
 				//execute the module using its own execution time
-				yield return new WaitForSeconds(actualModule.ExecutionTime + 1);
+				yield return new WaitForSeconds(actualModule.ExecutionTime);
 				
 				//stop specialized functions for each module
 				actualModule.StopModule();
@@ -297,19 +307,49 @@ public class SessionManager : MonoBehaviour {
 		//to update the score and log
 		if (text.Contains ("won")) {
 			updateScore(text);
-			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			this.sessionLog += text + " point(s) " + "\t\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			//create a point animation
+			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+
+			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
+			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
+
+			cloneTransform.SetParent(pointsPanelTransform, true);
+
+			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+
+			Text pointText = clone.GetComponent<Text>() as Text;
+			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
+			animationManager.StartPointsAnimation("stop");
+			pointText.text = "+";
+			animationManager.StartPointsAnimation("won_points");
 			//play the get sound
 			this.getPoint.Play();
 		}
 		else if(text.Contains("lost")){
 			updateScore(text);
 			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			//create a point animation
+			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+			
+			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
+			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
+			
+			cloneTransform.SetParent(pointsPanelTransform, true);
+			
+			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+			
+			Text pointText = clone.GetComponent<Text>() as Text;
+			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
+			animationManager.StartPointsAnimation("stop");
+			pointText.text = "-";
+			animationManager.StartPointsAnimation("lost_points");
 			//play the get sound
 			this.losePoint.Play();
 		}
 		//just a button pressed
 		else{
-			this.sessionLog += text + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			this.sessionLog += text + "\t\t\t" + this.actualSessionTime.ToString("0.0") + " s\n";
 			//button sound
 			this.buttonClick.Play ();
 		}
@@ -320,8 +360,20 @@ public class SessionManager : MonoBehaviour {
 		int points = int.Parse(Regex.Match(text, @"-?\d").Value);
 		//and update the score
 		int actualScore = int.Parse(this.score.text.ToString ());
-		actualScore += points;
-		this.score.text = actualScore.ToString ();
+
+		if (text.Contains ("won")) {
+			actualScore += points;
+			this.score.text = actualScore.ToString ();	
+			//update the total points earned along the session
+			this.EarnedPoints += points;
+		} 
+
+		else if(text.Contains("lost")){
+			actualScore -= points;
+			this.score.text = actualScore.ToString ();
+			//update the total points lost along the session
+			this.lostPoints += points;
+		}
 	}
 	
 	//===================================================================
@@ -364,7 +416,6 @@ public class SessionManager : MonoBehaviour {
 	void outputTotalSessionInformation(string filename){
 		ModuleReport report = new ModuleReport ();
 		foreach (BaseModule module in modules) {
-			report.Score += module.Report.Score;
 			report.Time += module.ExecutionTime;
 			foreach(string key in module.Report.ButtonCount.Keys){
 				report.ButtonCount[key] += module.Report.ButtonCount[key];
@@ -376,7 +427,9 @@ public class SessionManager : MonoBehaviour {
 			text += "\n\n=======================================================";
 			text += "\n=============== SESSION SUMMARY =======================";
 			text += "\n=======================================================\n\n";
-			text += "\nTotal Score: " + report.Score + " point(s)";
+			text += "\nEarned Points: " + this.EarnedPoints + " point(s)";
+			text += "\nLost Points: " + this.lostPoints + " point(s)";
+			text += "\nScore: " + this.score.text.ToString() + " point(s)";
 			text += "\nTotal Time: " + (report.Time * this.numberOfLoops) + " seconds\n\n";
 			text += "Button\t\tResponse Count\t\tResponse Rate(responses per minute)\n";
 			foreach(string key in report.ButtonCount.Keys){
