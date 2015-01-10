@@ -23,6 +23,8 @@ public class VariableRatioModule : BaseModule{
 
 	public override void StartModule(){
 
+		this.Score = 0;
+
 		if (this.Report == null)
 			this.Report = new ModuleReport();
 

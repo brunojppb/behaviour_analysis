@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 public class SessionManager : MonoBehaviour {
 
@@ -198,6 +199,11 @@ public class SessionManager : MonoBehaviour {
 		foreach (BaseModule m in this.modules)
 			this.sessionTime += m.ExecutionTime;
 
+		//make this session manager the observable object
+		//for each module
+		foreach (BaseModule m in this.modules)
+						m.ObservableSession = this;
+
 		//initialize the Log string
 		this.sessionLog = "\nEVENT RECORDING START\n\n";
 
@@ -211,7 +217,7 @@ public class SessionManager : MonoBehaviour {
 		this.numberOfLoops = string.IsNullOrEmpty(this.numberOfLoopsInput.text.ToString()) ? 1 : int.Parse (this.numberOfLoopsInput.text.ToString());
 
 		//begin the output file
-		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text.ToString(), participantName.text.ToString());
+		string fileName = string.Format("{0}_{1}.txt", sessionNumber.text.ToString(), participantName.text.ToString());
 		this.outputParticipantData (fileName);
 
 		for (int i = 0; i < numberOfLoops; i++) {
@@ -282,41 +288,42 @@ public class SessionManager : MonoBehaviour {
 	void addListener(Button b, BaseModule module){
 	
 		b.onClick.AddListener (() => module.ButtonClicked(b.name));
-		b.onClick.AddListener (() => this.ButtonClickedOnSession(b.name));
+		b.onClick.AddListener (() => this.WriteOnSessionLog(b.name));
 
 	}
-
-
-	void Update(){
-		//update the user score
-		int actualScore = int.Parse (score.text.ToString ());
-
-		if (this.modules != null && this.modules.Count > 0) {
-			int scoreSum = 0;
-			foreach (BaseModule module in this.modules) {
-				scoreSum += module.Score;
-			}
-
-			if(scoreSum > actualScore){
-				this.score.text = scoreSum.ToString ();
-				//Call the score animation and sound to earn points
-				this.getPoint.Play();
-			}
-			else if(scoreSum < actualScore){
-				this.score.text = scoreSum.ToString ();
-				//Call the score animation and sound to lose points
-				this.losePoint.Play();
-			}
-				
+	
+	public void WriteOnSessionLog(string text){
+		//observers called the method sending a message
+		//to update the score and log
+		if (text.Contains ("won")) {
+			updateScore(text);
+			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			//play the get sound
+			this.getPoint.Play();
+		}
+		else if(text.Contains("lost")){
+			updateScore(text);
+			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			//play the get sound
+			this.losePoint.Play();
+		}
+		//just a button pressed
+		else{
+			this.sessionLog += text + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
+			//button sound
+			this.buttonClick.Play ();
 		}
 	}
 
-	void ButtonClickedOnSession(string buttonName){
-		this.sessionLog += buttonName + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
-		//button sound
-		this.buttonClick.Play ();
+	private void updateScore(string text){
+		//extract the number of points inside the string
+		int points = int.Parse(Regex.Match(text, @"-?\d").Value);
+		//and update the score
+		int actualScore = int.Parse(this.score.text.ToString ());
+		actualScore += points;
+		this.score.text = actualScore.ToString ();
 	}
-
+	
 	//===================================================================
 	//Trigger a session timer to catch each button clicked and the time
 	// it was clicked
@@ -345,6 +352,9 @@ public class SessionManager : MonoBehaviour {
 			text += "\nSession number: " + this.sessionNumber.text.ToString();
 			text += "\nSession Time: " + this.sessionTime + " seconds";
 			text += "\nNumber of Loops: " + this.numberOfLoops;
+			text += "\nModules: \n";
+			foreach(BaseModule m in modules)
+				text += string.Format("\t - {0}\n", m.ToString());
 			text += "\n\nSession LOG:";
 			text = text.Replace("\n", System.Environment.NewLine);
 			file.WriteLine(text);

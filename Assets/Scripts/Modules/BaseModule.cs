@@ -15,11 +15,11 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 		set { executionTime = value; }
 	}
 
-//	private bool firstTimeRunning = true;
-//	public bool FirstTimeRunning{
-//		get { return firstTimeRunning;}
-//		set { firstTimeRunning = value;}
-//	}
+	private SessionManager observableSession;
+	public SessionManager ObservableSession{
+		get { return observableSession;}
+		set { observableSession = value;}
+	}
 
 	private int order;
 	public int Order{
@@ -30,7 +30,17 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 	private int score;
 	public int Score{
 		get { return score;}
-		set { score = value;}
+		set { 
+			if(value == 0){
+				//do nothing
+			}
+			else if(value > score)
+				this.observableSession.WriteOnSessionLog("won " + (value - score));
+			else if (value < score)
+				this.observableSession.WriteOnSessionLog("lost " + (score - value));
+			//update score
+			score = value;
+		}
 	}
 
 	private Dictionary<string, int> buttonCount;
