@@ -2541,7 +2541,7 @@ MonoBehaviour:
   losePoint: {fileID: 278675781}
   participantName: {fileID: 1970937461}
   sessionNumber: {fileID: 2103294339}
-  numberOfLoops: {fileID: 90566109}
+  numberOfLoopsInput: {fileID: 90566109}
   score: {fileID: 1969748778}
   buttons:
   - {fileID: 2123685730}

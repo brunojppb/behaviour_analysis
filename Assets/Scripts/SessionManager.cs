@@ -208,10 +208,10 @@ public class SessionManager : MonoBehaviour {
 	IEnumerator ExecuteModules(){
 
 		//setting up the number of loops the program will execut
-		this.numberOfLoops = string.IsNullOrEmpty(this.numberOfLoopsInput.text) ? 1 : int.Parse (this.numberOfLoopsInput.text.ToString());
+		this.numberOfLoops = string.IsNullOrEmpty(this.numberOfLoopsInput.text.ToString()) ? 1 : int.Parse (this.numberOfLoopsInput.text.ToString());
 
 		//begin the output file
-		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text, participantName.text);
+		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text.ToString(), participantName.text.ToString());
 		this.outputParticipantData (fileName);
 
 		for (int i = 0; i < numberOfLoops; i++) {
