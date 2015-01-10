@@ -23,6 +23,7 @@ public class ModuleReport {
 
 	public ModuleReport(){
 		this.score = 0;
+		this.time = 0;
 
 		//initialize the button counter
 		this.buttonCount = new Dictionary<string, int> ();

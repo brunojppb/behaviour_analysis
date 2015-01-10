@@ -15,11 +15,11 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 		set { executionTime = value; }
 	}
 
-	private bool firstTimeRunning = true;
-	public bool FirstTimeRunning{
-		get { return firstTimeRunning;}
-		set { firstTimeRunning = value;}
-	}
+//	private bool firstTimeRunning = true;
+//	public bool FirstTimeRunning{
+//		get { return firstTimeRunning;}
+//		set { firstTimeRunning = value;}
+//	}
 
 	private int order;
 	public int Order{

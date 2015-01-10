@@ -206,20 +206,23 @@ public class SessionManager : MonoBehaviour {
 	}
 
 	IEnumerator ExecuteModules(){
+
+		//setting up the number of loops the program will execut
+		this.numberOfLoops = string.IsNullOrEmpty(this.numberOfLoopsInput.text) ? 1 : int.Parse (this.numberOfLoopsInput.text.ToString());
+
 		//begin the output file
 		string fileName = string.Format("session_{0}_partipant_{1}.txt", sessionNumber.text, participantName.text);
 		this.outputParticipantData (fileName);
-
-		//setting up the number of loops the program will execut
-		this.numberOfLoops = this.numberOfLoopsInput.text == "" ? 1 : int.Parse (this.numberOfLoopsInput.text);
 
 		for (int i = 0; i < numberOfLoops; i++) {
 			//start a Coroutine to decrement the session time and generate a log
 			StopCoroutine("SessionTimer");
 			StartCoroutine ("SessionTimer");
-
-			this.sessionLog += string.Format("\nLOOP {0}:\n\n", i+1);
+			this.sessionLog += "\n\n=================================================\n";
+			this.sessionLog += string.Format("LOOP {0}:", (i+1));
+			this.sessionLog += "\n==================================================\n\n";
 			int moduleIndex = 0;
+
 			while (moduleIndex < this.modules.Count) {
 				BaseModule actualModule = modules[moduleIndex];
 				Debug.Log("Module " + actualModule.ToString() + " Running...");
@@ -229,7 +232,7 @@ public class SessionManager : MonoBehaviour {
 				actualModule.StartModule();
 				
 				//before to add listeners, write on the Log the actual module
-				this.sessionLog +=  string.Format("Module: {0}:\n", actualModule.ToString());
+				this.sessionLog +=  string.Format("Module: {0}\n", actualModule.ToString());
 				
 				//add a callback method to each button based on the module
 				foreach(Button button in this.buttons){
@@ -237,7 +240,7 @@ public class SessionManager : MonoBehaviour {
 				}
 				
 				//execute the module using its own execution time
-				yield return new WaitForSeconds(modules[moduleIndex].ExecutionTime + 1);
+				yield return new WaitForSeconds(actualModule.ExecutionTime + 1);
 				
 				//stop specialized functions for each module
 				actualModule.StopModule();
@@ -246,22 +249,25 @@ public class SessionManager : MonoBehaviour {
 				foreach(Button button in this.buttons){
 					button.onClick.RemoveAllListeners();
 				}
-
-				//write on the file the results
-				//write loop information on file
-				this.outputSesionData(fileName);
-				
-				//write each module on the log
-				foreach(BaseModule module in modules)
-					module.OutputData(fileName);
 				
 				//jump for the next module
 				moduleIndex++;
 			}
+
+			//write on the file the results
+			//write loop information on file
+			this.outputSesionData(fileName);
+
+			//clear the session log string
+			this.sessionLog = "";
+
+			//write each module on the log
+			foreach(BaseModule module in modules)
+				module.OutputData(fileName);
 		}
 
 		//output the total session information
-
+		this.outputTotalSessionInformation (fileName);
 
 		//End of the session
 		Debug.Log("End of the session...");
@@ -337,7 +343,6 @@ public class SessionManager : MonoBehaviour {
 			string text = "";
 			text += "\nParticipant Name: " + this.participantName.text.ToString();
 			text += "\nSession number: " + this.sessionNumber.text.ToString();
-			text += "\nTotal Score: " + this.score.text.ToString() + " point(s)";
 			text += "\nSession Time: " + this.sessionTime + " seconds";
 			text += "\nNumber of Loops: " + this.numberOfLoops;
 			text += "\n\nSession LOG:";
@@ -350,15 +355,23 @@ public class SessionManager : MonoBehaviour {
 		ModuleReport report = new ModuleReport ();
 		foreach (BaseModule module in modules) {
 			report.Score += module.Report.Score;
-			foreach(KeyValuePair<string, int> entry in module.ButtonCount){
-				report.ButtonCount[entry.Key] += entry.Value;
+			report.Time += module.ExecutionTime;
+			foreach(string key in module.Report.ButtonCount.Keys){
+				report.ButtonCount[key] += module.Report.ButtonCount[key];
 			}
 		}
 
 		using (StreamWriter file = new StreamWriter (filename, true)) {
-			string text = "\n\n===============SESSION OUTPUT=======================\n\n";
-			text = "\nTotal Score: " + report.Score;
-			text += "";
+			string text = "";
+			text += "\n\n=======================================================";
+			text += "\n=============== SESSION SUMMARY =======================";
+			text += "\n=======================================================\n\n";
+			text += "\nTotal Score: " + report.Score + " point(s)";
+			text += "\nTotal Time: " + (report.Time * this.numberOfLoops) + " seconds\n\n";
+			text += "Button\t\tResponse Count\t\tResponse Rate(responses per minute)\n";
+			foreach(string key in report.ButtonCount.Keys){
+				text += key + "\t\t" + report.ButtonCount[key] + "\t\t\t" + (report.ButtonCount[key] / ((report.Time*numberOfLoops)/60.0)) + "\n";
+			}
 			text = text.Replace("\n", System.Environment.NewLine);
 			file.WriteLine(text);
 		}

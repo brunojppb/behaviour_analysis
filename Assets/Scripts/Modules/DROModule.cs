@@ -26,10 +26,8 @@ public class DROModule : BaseModule {
 
 	public override void StartModule ()
 	{
-		if (this.FirstTimeRunning) {
+		if (this.Report == null)
 			this.Report = new ModuleReport();
-			this.FirstTimeRunning = false;
-		}
 
 		//initialize the button counter
 		this.ButtonCount = new Dictionary<string, int> ();
@@ -50,9 +48,13 @@ public class DROModule : BaseModule {
 		StopCoroutine ("DeliveryPoints");
 		//loop through the buttons to sum total cliks
 		this.Report.Score += this.Score;
-		foreach(KeyValuePair<string, int> entry in this.ButtonCount){
-			this.Report.ButtonCount[entry.Key] += entry.Value;
+		string debug = "";
+		foreach(string key in this.ButtonCount.Keys){
+			this.Report.ButtonCount[key] += this.ButtonCount[key];
+			debug += "Key: " + key + " - Value: " + this.ButtonCount[key] + "\n";
 		}
+
+		Debug.Log (debug);
 
 
 	}
