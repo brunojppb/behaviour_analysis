@@ -27,8 +27,10 @@ public class SessionManager : MonoBehaviour {
 	public GameObject penalty;
 	public GameObject penaltyVR;
 
+	[Header("End of the Session Panel")]
 	public GameObject EndOfSessionPanel;
 	public GameObject EndOfSessionResetButton;
+	public GameObject EndOfSessionResetSameSettingsButton;
 	public GameObject EndOfSessionQuitButton;
 
 	[Header("Points Animation")]
@@ -47,6 +49,9 @@ public class SessionManager : MonoBehaviour {
 	public InputField sessionNumber;
 	public InputField numberOfLoopsInput;
 	public Text score;
+
+	[Header("Button Screen animator")]
+	public Animator buttonScreen;
 
 	//number of loops the program will execute
 	private int numberOfLoops;
@@ -465,11 +470,51 @@ public class SessionManager : MonoBehaviour {
 		this.EndOfSessionPanel.SetActive (true);
 		this.EndOfSessionResetButton.SetActive (false);
 		this.EndOfSessionQuitButton.SetActive (false);
+		this.EndOfSessionResetSameSettingsButton.SetActive (false);
 		yield return new WaitForSeconds (3);
 		this.EndOfSessionResetButton.SetActive (true);
 		this.EndOfSessionQuitButton.SetActive (true);
+		this.EndOfSessionResetSameSettingsButton.SetActive (true);
 	}
-}
+
+	public void hideEndOfTheSessionPanel(){
+		this.EndOfSessionPanel.SetActive (false);
+	}
+
+	public void dismissButtonScreen(){
+		this.buttonScreen.SetBool("isHidden", true);
+	}
+
+	//===================================================================
+	//Restart the session with the same settings
+	//===================================================================
+	public void restartSessionWithSameSettings(){
+		//Clear points
+		this.EarnedPoints = 0;
+		this.lostPoints = 0;
+
+		//clear the score UI
+		this.score.text = "0";
+
+		//increment the number of the session
+		int session = int.Parse (this.sessionNumber.text.ToString ());
+		session++;
+		this.sessionNumber.text = session.ToString();
+
+		//clear the session log
+		this.sessionLog = "";
+
+		//restart the modules array
+		this.modules.Clear ();
+
+		//hide the end of the session box
+		this.hideEndOfTheSessionPanel ();
+
+		//dismiss the buttons screen
+		this.dismissButtonScreen ();
+
+	}
+}	
 
 
 
