@@ -6,10 +6,15 @@ public class PanelDROVRManager : MonoBehaviour {
 
 	public Animator targetButtonAnimator;
 
+	[Header("User Input")]
 	public InputField timeInterval;
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
+	public InputField droPoints;
+	public InputField VrPoints;
+
+	[Header("Target Button Sprites")]
 	public Image buttonImage;
 	public Sprite[] buttonSprites;
 

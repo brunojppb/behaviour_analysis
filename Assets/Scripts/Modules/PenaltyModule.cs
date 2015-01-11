@@ -11,6 +11,12 @@ public class PenaltyModule : BaseModule {
 		set { targetButton = value; }
 	}
 
+	private int pointsToDelivery;
+	public int PointsToDelivery{
+		get {return pointsToDelivery;}
+		set {pointsToDelivery = value;}
+	}
+
 	public override void StartModule (){ 
 
 		this.Score = 0;
@@ -51,7 +57,7 @@ public class PenaltyModule : BaseModule {
 			//if the user clicks on the target button
 			if(this.targetButton == buttonColor){
 					//... he loses 1 point
-					this.Score--;
+					this.Score -= this.pointsToDelivery;
 			}
 		} 
 	}

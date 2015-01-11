@@ -17,6 +17,12 @@ public class VariableRatioModule : BaseModule{
 		set { variableRatio = value; }
 	}
 
+	private int pointsToDelivery;
+	public int PointsToDelivery{
+		get {return pointsToDelivery;}
+		set {pointsToDelivery = value;}
+	}
+
 	//random number between VariableRatio-2 and VariableRatio+2
 	private int randomVariation;
 	private int clickCount;
@@ -68,8 +74,8 @@ public class VariableRatioModule : BaseModule{
 			if(this.targetButton == buttonColor){
 
 				if(clickCount == randomVariation){
-					//... he earns 1 point
-					this.Score++;
+					//... he earns PointsToDelivery
+					this.Score += this.pointsToDelivery;
 					//and the click counter reset
 					this.clickCount = 0;
 					//generates a new random number

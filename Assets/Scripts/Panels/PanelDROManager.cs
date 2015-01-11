@@ -4,13 +4,18 @@ using System.Collections;
 
 public class PanelDROManager : MonoBehaviour {
 
+	[Header("User Input")]
 	public Animator droTargetButton;
 	public InputField timeInteval;
 	public InputField executionTime;
 	public InputField order;
+	public InputField droPoints;
+
+	[Header("Target Button Sprites")]
 	public Image buttonImage;
 	public Sprite[] buttonSprites;
-	
+
+
 	private string buttonSelected;
 	public string ButtonSelected{
 		get {return buttonSelected;}

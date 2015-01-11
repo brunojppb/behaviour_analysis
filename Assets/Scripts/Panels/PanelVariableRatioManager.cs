@@ -6,10 +6,14 @@ public class PanelVariableRatioManager : MonoBehaviour {
 
 	public Animator targetButtonDropDown;
 
+	[Header("User Input")]
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
+	public InputField vrPoints;
 	public Image buttonImage;
+
+	[Header("Target Button Sprites")]
 	public Sprite[] buttonSprites;
 
 	private string buttonSelected;

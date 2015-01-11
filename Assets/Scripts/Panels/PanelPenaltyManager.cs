@@ -5,8 +5,13 @@ using UnityEngine.UI;
 public class PanelPenaltyManager : MonoBehaviour {
 
 	public Animator targetButtonDropDown;
+
+	[Header("User Input")]
 	public InputField executionTime;
 	public InputField order;
+	public InputField penaltyPoints;
+
+	[Header("Target Button Sprites")]
 	public Image buttonImage;
 	public Sprite[] buttonSprites;
 

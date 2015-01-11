@@ -11,11 +11,17 @@ public class FixedTimeModule : BaseModule {
 		set {timeInteval = value;}
 	}
 
+	private int pointsToDelivery;
+	public int PointsToDelivery{
+		get {return pointsToDelivery;}
+		set {pointsToDelivery = value;}
+	}
+
 	//Delive points avery timeInterval (seconds)
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
-			this.Score++;
+			this.Score += this.pointsToDelivery;
 		}
 	}
 

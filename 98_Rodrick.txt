@@ -1,0 +1,68 @@
+
+Participant Name: Rodrick
+Session number: 98
+Session Time: 5 seconds
+Number of Loops: 1
+Modules: 
+	 - Fixed Time
+
+
+Session LOG:
+
+EVENT RECORDING START
+
+
+
+
+=================================================
+LOOP 1:
+==================================================
+
+Module: Fixed Time
+won 10 point(s) 		0.9 s
+won 10 point(s) 		1.8 s
+won 10 point(s) 		2.7 s
+won 10 point(s) 		3.6 s
+
+
+=================================================
+Fixed Time Module
+=================================================
+Time Interval: 1
+Execution Time: 0.0833333333333333 minutes
+Earned Points: 40
+Lost Points: 0
+Score: 40
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		0			0
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+
+
+=======================================================
+=============== SESSION SUMMARY =======================
+=======================================================
+
+
+Earned Points: 40 point(s)
+Lost Points: 0 point(s)
+Score: 40 point(s)
+Total Time: 5 seconds
+
+Button		Response Count		Response Rate(responses per minute)
+blue		0			0
+green		0			0
+yellow		0			0
+pink		0			0
+black		0			0
+red		0			0
+purple		0			0
+orange		0			0
+white		0			0
+

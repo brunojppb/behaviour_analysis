@@ -5,10 +5,15 @@ using System.Collections;
 public class PanelPenaltyVRManager : MonoBehaviour {
 
 	public Animator targetButtonDropDown;
-	
+
+	[Header("User Input")]
 	public InputField variableRatio;
 	public InputField executionTime;
 	public InputField order;
+	public InputField penaltyPoints;
+	public InputField vrPoints;
+
+	[Header("Target Button Sprites")]
 	public Image buttonImage;
 	public Sprite[] buttonSprites;
 	

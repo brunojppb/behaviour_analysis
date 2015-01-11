@@ -11,6 +11,13 @@ public class DROModule : BaseModule {
 		set {timeInteval = value;}
 	}
 
+	private int pointsToDelivery;
+	public int PointsToDelivery{
+		get {return pointsToDelivery;}
+		set {pointsToDelivery = value;}
+	}
+
+
 	private string targetButton;
 	public string TargetButton{
 		get { return targetButton; }
@@ -20,7 +27,7 @@ public class DROModule : BaseModule {
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
-			this.Score++;
+			this.Score += this.pointsToDelivery;
 		}
 	}
 

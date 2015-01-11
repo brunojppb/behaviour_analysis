@@ -82,12 +82,14 @@ public class SessionManager : MonoBehaviour {
 			string targetButton = variableRatioManager.ButtonSelected;
 			int execTime = int.Parse(variableRatioManager.executionTime.text.ToString());
 			int order = int.Parse(variableRatioManager.order.text.ToString());
+			int points = int.Parse(variableRatioManager.vrPoints.text.ToString());
 
 			VariableRatioModule vr = this.variableRatioManager.gameObject.AddComponent("VariableRatioModule") as VariableRatioModule;
 			vr.VariableRatio = variableRatio;
 			vr.TargetButton = targetButton;
 			vr.ExecutionTime = execTime;
 			vr.Order = order;
+			vr.PointsToDelivery = points;
 
 			modules.Add(vr);
 		}
@@ -101,12 +103,14 @@ public class SessionManager : MonoBehaviour {
 			string targetButton = this.DROManager.ButtonSelected;
 			int execTime = int.Parse(this.DROManager.executionTime.text.ToString());
 			int order = int.Parse(this.DROManager.order.text.ToString());
+			int points = int.Parse(this.DROManager.droPoints.text.ToString());
 
 			DROModule dro = this.DROManager.gameObject.AddComponent("DROModule") as DROModule;
 			dro.TimeInterval = timeInterval;
 			dro.TargetButton = targetButton;
 			dro.ExecutionTime = execTime;
 			dro.Order = order;
+			dro.PointsToDelivery = points;
 
 			modules.Add(dro);
 		}
@@ -121,6 +125,8 @@ public class SessionManager : MonoBehaviour {
 			//string droTargetButton = this.DROVRManager.DroTargetButtonSelected;
 			int execTime = int.Parse(this.DROVRManager.executionTime.text.ToString());
 			int order = int.Parse(this.DROVRManager.order.text.ToString());
+			int vrPoints = int.Parse(this.DROVRManager.VrPoints.text.ToString());
+			int droPoints = int.Parse(this.DROVRManager.droPoints.text.ToString());
 
 			DROVRModule droVr = this.DROVRManager.gameObject.AddComponent("DROVRModule") as DROVRModule;
 			droVr.TimeInterval = timeInterval;
@@ -129,6 +135,8 @@ public class SessionManager : MonoBehaviour {
 			//droVr.DroTargetButton = droTargetButton;
 			droVr.ExecutionTime = execTime;
 			droVr.Order = order;
+			droVr.VRPointsToDelivery = vrPoints;
+			droVr.DROPointsToDelivery = droPoints;
 
 			modules.Add(droVr);
 		}
@@ -140,11 +148,13 @@ public class SessionManager : MonoBehaviour {
 			int timeInterval = int.Parse(this.fixedTimeManager.timeInteval.text.ToString());
 			int execTime = int.Parse(this.fixedTimeManager.executionTime.text.ToString());
 			int order = int.Parse(this.fixedTimeManager.order.text.ToString());
+			int points = int.Parse(this.fixedTimeManager.fixedTimePoints.text.ToString());
 
 			FixedTimeModule fixedTimeModule = this.fixedTimeManager.gameObject.AddComponent("FixedTimeModule") as FixedTimeModule;
 			fixedTimeModule.TimeInterval = timeInterval;
 			fixedTimeModule.ExecutionTime = execTime;
 			fixedTimeModule.Order = order;
+			fixedTimeModule.PointsToDelivery = points;
 
 			modules.Add(fixedTimeModule);
 		}
@@ -170,11 +180,13 @@ public class SessionManager : MonoBehaviour {
 			int execTime = int.Parse(this.penaltyManager.executionTime.text.ToString());
 			int order = int.Parse(this.penaltyManager.order.text.ToString());
 			string targetButton = this.penaltyManager.TargetButton;
+			int points = int.Parse(this.penaltyManager.penaltyPoints.text.ToString());
 
 			PenaltyModule penaltyModule = this.penaltyManager.gameObject.AddComponent("PenaltyModule") as PenaltyModule;
 			penaltyModule.ExecutionTime = execTime;
 			penaltyModule.Order = order;
 			penaltyModule.TargetButton = targetButton;
+			penaltyModule.PointsToDelivery = points;
 
 			this.modules.Add(penaltyModule);
 		}
@@ -187,12 +199,16 @@ public class SessionManager : MonoBehaviour {
 			int order = int.Parse(this.penaltyVRManager.order.text.ToString());
 			string targetButton = this.penaltyVRManager.ButtonSelected;
 			int vr = int.Parse(this.penaltyVRManager.variableRatio.text.ToString());
+			int penaltyPoints = int.Parse(this.penaltyVRManager.penaltyPoints.text.ToString());
+			int vrPoints = int.Parse(this.penaltyVRManager.vrPoints.text.ToString());
 
 			PenaltyVRModule penaltyVRModule = this.penaltyVRManager.gameObject.AddComponent("PenaltyVRModule") as PenaltyVRModule;
 			penaltyVRModule.ExecutionTime = execTime;
 			penaltyVRModule.Order = order;
 			penaltyVRModule.TargetButton = targetButton;
 			penaltyVRModule.VariableRatio = vr;
+			penaltyVRModule.VRPointsToDelivery = vrPoints;
+			penaltyVRModule.PenaltyPointsToDelivery = penaltyPoints;
 
 			this.modules.Add(penaltyVRModule);
 
@@ -323,7 +339,7 @@ public class SessionManager : MonoBehaviour {
 
 	private void updateScore(string text){
 		//extract the number of points inside the string
-		int points = int.Parse(Regex.Match(text, @"-?\d").Value);
+		int points = int.Parse(Regex.Match(text, @"-?\d+").Value);
 		//and update the score
 		int actualScore = int.Parse(this.score.text.ToString ());
 

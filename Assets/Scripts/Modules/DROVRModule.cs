@@ -13,12 +13,12 @@ public class DROVRModule : BaseModule {
 		get {return timeInteval;}
 		set {timeInteval = value;}
 	}
-	
-//	private string droTargetButton;
-//	public string DroTargetButton{
-//		get { return droTargetButton; }
-//		set { droTargetButton = value; }
-//	}
+
+	private int droPointsToDelivery;
+	public int DROPointsToDelivery{
+		get {return droPointsToDelivery;}
+		set {droPointsToDelivery = value;}
+	}
 
 	//===========================================
 	//VR Module Variables
@@ -28,6 +28,14 @@ public class DROVRModule : BaseModule {
 		get { return targetButton; }
 		set { targetButton = value; }
 	}
+
+	private int vrPointsToDelivery;
+	public int VRPointsToDelivery{
+		get {return vrPointsToDelivery;}
+		set {vrPointsToDelivery = value;}
+	}
+
+
 
 	private int variableRatio;
 	public int VariableRatio{
@@ -54,8 +62,8 @@ public class DROVRModule : BaseModule {
 
 				//VR Module logic
 				if(clickCount == randomVariation){
-					//... he earns 1 point
-					this.Score++;
+					//... player earns vr delivery points
+					this.Score += this.vrPointsToDelivery;
 					//and the click counter reset
 					this.clickCount = 0;
 					//generates a new random number
@@ -123,12 +131,12 @@ public class DROVRModule : BaseModule {
 	}
 
 	//========================================================
-	//Delivery 2 points based on the time interval
+	//Delivery DRODeliveryPoints based on the time interval
 	//========================================================
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
-			this.Score += 2;
+			this.Score += droPointsToDelivery;
 		}
 	}
 

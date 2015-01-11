@@ -1,0 +1,11 @@
+
+Participant Name: Jakison
+Session number: 3
+Session Time: 20 seconds
+Number of Loops: 1
+Modules: 
+	 - Variable Ratio
+	 - Penalty
+
+
+Session LOG:

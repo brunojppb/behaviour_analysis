@@ -16,6 +16,18 @@ public class PenaltyVRModule : BaseModule {
 		get { return variableRatio; }
 		set { variableRatio = value; }
 	}
+
+	private int vrPointsToDelivery;
+	public int VRPointsToDelivery{
+		get {return vrPointsToDelivery;}
+		set {vrPointsToDelivery = value;}
+	}
+
+	private int penaltyPointsToDelivery;
+	public int PenaltyPointsToDelivery{
+		get {return penaltyPointsToDelivery;}
+		set {penaltyPointsToDelivery = value;}
+	}
 	
 	//random number between VariableRatio-2 and VariableRatio+2
 	private int randomVariation;
@@ -60,12 +72,12 @@ public class PenaltyVRModule : BaseModule {
 			//if the user achieve the target button...
 			if(this.targetButton == buttonColor){
 
-				//... he loses 1 point ( Penalty Module Logic)
-				this.Score--;
+				//... he loses penaltyPointsToDelivery ( Penalty Module Logic)
+				this.Score -= this.penaltyPointsToDelivery;
 
 				if(clickCount == randomVariation){
-					//... he earns 1 point
-					this.Score++;
+					//... he earns VrPointsToDelivery point
+					this.Score += this.vrPointsToDelivery;
 					//and the click counter reset
 					this.clickCount = 0;
 					//generates a new random number
