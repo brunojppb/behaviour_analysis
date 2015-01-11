@@ -308,44 +308,10 @@ public class SessionManager : MonoBehaviour {
 		if (text.Contains ("won")) {
 			updateScore(text);
 			this.sessionLog += text + " point(s) " + "\t\t" + this.actualSessionTime.ToString("0.0") + " s\n";
-			//create a point animation
-			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
-
-			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
-			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
-
-			cloneTransform.SetParent(pointsPanelTransform, true);
-
-			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
-
-			Text pointText = clone.GetComponent<Text>() as Text;
-			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
-			animationManager.StartPointsAnimation("stop");
-			pointText.text = "+";
-			animationManager.StartPointsAnimation("won_points");
-			//play the get sound
-			this.getPoint.Play();
 		}
 		else if(text.Contains("lost")){
 			updateScore(text);
 			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
-			//create a point animation
-			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
-			
-			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
-			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
-			
-			cloneTransform.SetParent(pointsPanelTransform, true);
-			
-			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
-			
-			Text pointText = clone.GetComponent<Text>() as Text;
-			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
-			animationManager.StartPointsAnimation("stop");
-			pointText.text = "-";
-			animationManager.StartPointsAnimation("lost_points");
-			//play the get sound
-			this.losePoint.Play();
 		}
 		//just a button pressed
 		else{
@@ -366,6 +332,24 @@ public class SessionManager : MonoBehaviour {
 			this.score.text = actualScore.ToString ();	
 			//update the total points earned along the session
 			this.EarnedPoints += points;
+
+			//create a point animation
+			//clone the prefab object and instantiate close to the score UI
+			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
+			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
+			//
+			cloneTransform.SetParent(pointsPanelTransform, true);
+			
+			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+			
+			Text pointText = clone.GetComponent<Text>() as Text;
+			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
+			animationManager.StartPointsAnimation("stop");
+			pointText.text = string.Format("+{0}", points.ToString());
+			animationManager.StartPointsAnimation("won_points");
+			//play the get sound
+			this.getPoint.Play();
 		} 
 
 		else if(text.Contains("lost")){
@@ -373,6 +357,23 @@ public class SessionManager : MonoBehaviour {
 			this.score.text = actualScore.ToString ();
 			//update the total points lost along the session
 			this.lostPoints += points;
+			//create a point animation
+			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+			
+			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
+			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
+			
+			cloneTransform.SetParent(pointsPanelTransform, true);
+			
+			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+			
+			Text pointText = clone.GetComponent<Text>() as Text;
+			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
+			animationManager.StartPointsAnimation("stop");
+			pointText.text = string.Format("-{0}", points.ToString());
+			animationManager.StartPointsAnimation("lost_points");
+			//play the get sound
+			this.losePoint.Play();
 		}
 	}
 	
