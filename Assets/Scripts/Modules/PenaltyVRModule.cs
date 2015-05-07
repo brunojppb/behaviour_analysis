@@ -112,6 +112,7 @@ public class PenaltyVRModule : BaseModule {
 		text += "Penalty + VR Module";
 		text += "\n=================================================\n";
 		text += "VR: " + this.VariableRatio;
+		text += "\nPenalty Points: " + this.penaltyPointsToDelivery;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
 		text += "\nTarget Button: " + this.TargetButton;
 		text += "\nEarned Points: " + this.Report.EarnedPoints;

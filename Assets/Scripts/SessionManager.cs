@@ -89,7 +89,7 @@ public class SessionManager : MonoBehaviour {
 			int order = int.Parse(variableRatioManager.order.text.ToString());
 			int points = int.Parse(variableRatioManager.vrPoints.text.ToString());
 
-			VariableRatioModule vr = this.variableRatioManager.gameObject.AddComponent("VariableRatioModule") as VariableRatioModule;
+			VariableRatioModule vr = this.variableRatioManager.gameObject.AddComponent<VariableRatioModule>() as VariableRatioModule;
 			vr.VariableRatio = variableRatio;
 			vr.TargetButton = targetButton;
 			vr.ExecutionTime = execTime;
@@ -110,7 +110,7 @@ public class SessionManager : MonoBehaviour {
 			int order = int.Parse(this.DROManager.order.text.ToString());
 			int points = int.Parse(this.DROManager.droPoints.text.ToString());
 
-			DROModule dro = this.DROManager.gameObject.AddComponent("DROModule") as DROModule;
+			DROModule dro = this.DROManager.gameObject.AddComponent<DROModule>() as DROModule;
 			dro.TimeInterval = timeInterval;
 			dro.TargetButton = targetButton;
 			dro.ExecutionTime = execTime;
@@ -133,7 +133,7 @@ public class SessionManager : MonoBehaviour {
 			int vrPoints = int.Parse(this.DROVRManager.VrPoints.text.ToString());
 			int droPoints = int.Parse(this.DROVRManager.droPoints.text.ToString());
 
-			DROVRModule droVr = this.DROVRManager.gameObject.AddComponent("DROVRModule") as DROVRModule;
+			DROVRModule droVr = this.DROVRManager.gameObject.AddComponent<DROVRModule>() as DROVRModule;
 			droVr.TimeInterval = timeInterval;
 			droVr.VariableRatio = variableRatio;
 			droVr.TargetButton = targetButton;
@@ -155,7 +155,7 @@ public class SessionManager : MonoBehaviour {
 			int order = int.Parse(this.fixedTimeManager.order.text.ToString());
 			int points = int.Parse(this.fixedTimeManager.fixedTimePoints.text.ToString());
 
-			FixedTimeModule fixedTimeModule = this.fixedTimeManager.gameObject.AddComponent("FixedTimeModule") as FixedTimeModule;
+			FixedTimeModule fixedTimeModule = this.fixedTimeManager.gameObject.AddComponent<FixedTimeModule>() as FixedTimeModule;
 			fixedTimeModule.TimeInterval = timeInterval;
 			fixedTimeModule.ExecutionTime = execTime;
 			fixedTimeModule.Order = order;
@@ -171,7 +171,7 @@ public class SessionManager : MonoBehaviour {
 			int execTime = int.Parse(this.extinctionManager.executionTime.text.ToString());
 			int order = int.Parse(this.extinctionManager.order.text.ToString());
 
-			ExtinctionModule extinctionModule = this.extinctionManager.gameObject.AddComponent("ExtinctionModule") as ExtinctionModule;
+			ExtinctionModule extinctionModule = this.extinctionManager.gameObject.AddComponent<ExtinctionModule>() as ExtinctionModule;
 			extinctionModule.ExecutionTime = execTime;
 			extinctionModule.Order = order;
 
@@ -187,7 +187,7 @@ public class SessionManager : MonoBehaviour {
 			string targetButton = this.penaltyManager.TargetButton;
 			int points = int.Parse(this.penaltyManager.penaltyPoints.text.ToString());
 
-			PenaltyModule penaltyModule = this.penaltyManager.gameObject.AddComponent("PenaltyModule") as PenaltyModule;
+			PenaltyModule penaltyModule = this.penaltyManager.gameObject.AddComponent<PenaltyModule>() as PenaltyModule;
 			penaltyModule.ExecutionTime = execTime;
 			penaltyModule.Order = order;
 			penaltyModule.TargetButton = targetButton;
@@ -207,7 +207,7 @@ public class SessionManager : MonoBehaviour {
 			int penaltyPoints = int.Parse(this.penaltyVRManager.penaltyPoints.text.ToString());
 			int vrPoints = int.Parse(this.penaltyVRManager.vrPoints.text.ToString());
 
-			PenaltyVRModule penaltyVRModule = this.penaltyVRManager.gameObject.AddComponent("PenaltyVRModule") as PenaltyVRModule;
+			PenaltyVRModule penaltyVRModule = this.penaltyVRManager.gameObject.AddComponent<PenaltyVRModule>() as PenaltyVRModule;
 			penaltyVRModule.ExecutionTime = execTime;
 			penaltyVRModule.Order = order;
 			penaltyVRModule.TargetButton = targetButton;
@@ -403,10 +403,11 @@ public class SessionManager : MonoBehaviour {
 	// it was clicked
 	//===================================================================
 	IEnumerator SessionTimer(){
-		this.actualSessionTime = 0;
+		this.actualSessionTime = 1;
+		Debug.Log ("Session Time: " + this.sessionTime);
 		while (this.actualSessionTime < this.sessionTime) {
-			yield return new WaitForSeconds(0.1f);
-			this.actualSessionTime += 0.1f;
+			yield return new WaitForSeconds(1.0f);
+			this.actualSessionTime += 1.0f;
 
 		}
 	}
