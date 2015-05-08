@@ -166,7 +166,7 @@ public class SessionManager : MonoBehaviour {
 
 		//=================================================
 		//Fifth Module - Extinction
-		//================================================
+		//=================================================
 		if (extinction.activeSelf) {
 			int execTime = int.Parse(this.extinctionManager.executionTime.text.ToString());
 			int order = int.Parse(this.extinctionManager.order.text.ToString());
@@ -233,7 +233,7 @@ public class SessionManager : MonoBehaviour {
 		//make this session manager the observable object
 		//for each module
 		foreach (BaseModule m in this.modules)
-						m.ObservableSession = this;
+			m.ObservableSession = this;
 
 		//initialize the Log string
 		this.sessionLog = "\nEVENT RECORDING START\n\n";
@@ -251,8 +251,11 @@ public class SessionManager : MonoBehaviour {
 		string fileName = string.Format("{0}_{1}.txt", sessionNumber.text.ToString(), participantName.text.ToString());
 		this.outputParticipantData (fileName);
 
+		// Iterate through the number of loops the 
+		// user had setup on the main screen
 		for (int i = 0; i < numberOfLoops; i++) {
-			//start a Coroutine to decrement the session time and generate a log
+			// Start a Coroutine to decrement the session time and generate a log.
+			// This coroutine manage the session time of each loop
 			StopCoroutine("SessionTimer");
 			StartCoroutine ("SessionTimer");
 			this.sessionLog += "\n\n\n=================================================\n";
@@ -268,16 +271,16 @@ public class SessionManager : MonoBehaviour {
 				//start specialized functions for each module
 				actualModule.StartModule();
 				
-				//before to add listeners, write on the Log the actual module
+				//before to add listeners, Log the actual module
 				this.sessionLog +=  string.Format("Module: {0}\n", actualModule.ToString());
 				
-				//add a callback method to each button based on the module
+				//add a callback method to each button based on the module function
 				foreach(Button button in this.buttons){
 					this.addListener(button, actualModule);
 				}
 				
 				//execute the module using its own execution time
-				yield return new WaitForSeconds(actualModule.ExecutionTime);
+				yield return new WaitForSeconds(actualModule.ExecutionTime+1.0f);
 				
 				//stop specialized functions for each module
 				actualModule.StopModule();
@@ -287,7 +290,7 @@ public class SessionManager : MonoBehaviour {
 					button.onClick.RemoveAllListeners();
 				}
 				
-				//jump for the next module
+				//jump to next module
 				moduleIndex++;
 			}
 
@@ -312,6 +315,19 @@ public class SessionManager : MonoBehaviour {
 		//show the end of the session panel
 		//and let the user exit the program or restart
 		StartCoroutine ("ShowEndOfTheSessionPanel");
+	}
+
+	//===================================================================
+	//Trigger a session timer to catch each button clicked and the time
+	// it was clicked
+	//===================================================================
+	IEnumerator SessionTimer(){
+		this.actualSessionTime = 0.0f;
+		while (this.actualSessionTime <= this.sessionTime) {
+			yield return new WaitForSeconds(0.1f);
+			this.actualSessionTime += 0.1f;
+			
+		}
 	}
 
 
@@ -398,19 +414,7 @@ public class SessionManager : MonoBehaviour {
 		}
 	}
 	
-	//===================================================================
-	//Trigger a session timer to catch each button clicked and the time
-	// it was clicked
-	//===================================================================
-	IEnumerator SessionTimer(){
-		this.actualSessionTime = 1;
-		Debug.Log ("Session Time: " + this.sessionTime);
-		while (this.actualSessionTime < this.sessionTime) {
-			yield return new WaitForSeconds(1.0f);
-			this.actualSessionTime += 1.0f;
 
-		}
-	}
 
 	void outputSesionData(string filename){
 
