@@ -59,6 +59,7 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 		set { report = value; }
 	}
 
+
 	//Icomparable method
 	public int CompareTo(BaseModule other){
 		if (other == null)
@@ -72,6 +73,7 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 	
 
 	}
+	public virtual void UpdateObserverTime(float time){Debug.Log ("BaseModule method caled... You must override this method");}
 	public virtual void StartModule (){ Debug.Log ("BaseModule method caled... You must override this method"); }
 	public virtual void StopModule (){ Debug.Log ("BaseModule method caled... You must override this method"); }
 	public virtual void OutputData (string fileName){ Debug.Log ("BaseModule method caled... You must override this method"); }

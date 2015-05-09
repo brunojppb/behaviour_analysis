@@ -5,11 +5,15 @@ using System.IO;
 
 public class DROModule : BaseModule {
 
-	private int timeInteval;
-	public int TimeInterval{
+	private float timeInteval;
+	public float TimeInterval{
 		get {return timeInteval;}
 		set {timeInteval = value;}
 	}
+
+	private float lastTimeClicked = 0.0f;
+	private float lastTimeUpdate = 0.0f;
+	private bool moduleRunning = false;
 
 	private int pointsToDelivery;
 	public int PointsToDelivery{
@@ -52,12 +56,13 @@ public class DROModule : BaseModule {
 		this.ButtonCount.Add ("purple", 0);
 		this.ButtonCount.Add ("orange", 0);
 		this.ButtonCount.Add ("white", 0);
-
-		StartCoroutine ("DeliveryPoints");
+		this.moduleRunning = true;
+//		StartCoroutine ("DeliveryPoints");
 	}
 
 	public override void StopModule(){
-		StopCoroutine ("DeliveryPoints");
+		this.moduleRunning = false;
+//		StopCoroutine ("DeliveryPoints");
 		//loop through the buttons to sum total cliks
 		foreach(string key in this.ButtonCount.Keys){
 			this.Report.ButtonCount[key] += this.ButtonCount[key];
@@ -76,13 +81,30 @@ public class DROModule : BaseModule {
 			this.ButtonCount [color]++;
 			//if the button clicked was the target button
 			if(color == this.TargetButton){
+				this.lastTimeClicked = this.lastTimeUpdate;
 				//reset the timer and start again
-				StopCoroutine("DeliveryPoints");
-				StartCoroutine("DeliveryPoints");
+//				StopCoroutine("DeliveryPoints");
+//				StartCoroutine("DeliveryPoints");
 			}
 		}
 
 
+	}
+
+	private void calculatePoints(){
+		Debug.Log ("Last time: " + this.lastTimeClicked + " - Click: " + this.lastTimeClicked);
+		if (this.lastTimeUpdate >= (this.lastTimeClicked + this.timeInteval)) {
+			this.lastTimeClicked = this.lastTimeUpdate;
+			this.Score += this.pointsToDelivery;
+		}
+	}
+
+	public override void UpdateObserverTime (float time)
+	{
+		if(moduleRunning){
+			lastTimeUpdate = time;
+			this.calculatePoints ();
+		}
 	}
 
 

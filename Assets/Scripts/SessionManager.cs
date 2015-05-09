@@ -66,7 +66,16 @@ public class SessionManager : MonoBehaviour {
 
 	//Total time of the session to generate a log
 	private int sessionTime;
-	private float actualSessionTime;
+	public float actualSessionTime;
+	public float ActualSessionTime{
+		get { return actualSessionTime; }
+		set {
+			actualSessionTime = value;
+			foreach(BaseModule m in modules) {
+				m.UpdateObserverTime(value);
+			}
+		}
+	}
 	private int actualScore;
 
 	//Log generated after each click
@@ -104,7 +113,7 @@ public class SessionManager : MonoBehaviour {
 		//=================================================
 		if(DRO.activeSelf){
 			//instantiate the module and put into the array
-			int timeInterval = int.Parse(this.DROManager.timeInteval.text.ToString());
+			float timeInterval = float.Parse(this.DROManager.timeInteval.text.ToString());
 			string targetButton = this.DROManager.ButtonSelected;
 			int execTime = int.Parse(this.DROManager.executionTime.text.ToString());
 			int order = int.Parse(this.DROManager.order.text.ToString());
@@ -322,10 +331,10 @@ public class SessionManager : MonoBehaviour {
 	// it was clicked
 	//===================================================================
 	IEnumerator SessionTimer(){
-		this.actualSessionTime = 0.0f;
-		while (this.actualSessionTime <= this.sessionTime) {
+		ActualSessionTime = 0.0f;
+		while (ActualSessionTime <= this.sessionTime) {
 			yield return new WaitForSeconds(0.1f);
-			this.actualSessionTime += 0.1f;
+			ActualSessionTime += 0.1f;
 			
 		}
 	}
