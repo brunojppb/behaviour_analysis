@@ -20,6 +20,16 @@ public class DROVRModule : BaseModule {
 		set {droPointsToDelivery = value;}
 	}
 
+	private float lastTimeClicked = 0.0f;
+	private float lastTimeUpdate = 0.0f;
+	private bool moduleRunning = false;
+	
+	private int pointsToDelivery;
+	public int PointsToDelivery{
+		get {return pointsToDelivery;}
+		set {pointsToDelivery = value;}
+	}
+
 	//===========================================
 	//VR Module Variables
 	//===========================================
@@ -43,7 +53,7 @@ public class DROVRModule : BaseModule {
 		set { variableRatio = value; }
 	}
 	
-	//random number between VariableRatio-2 and VariableRatio+2
+	//random number between (VariableRatio-2) and (VariableRatio+2)
 	private int randomVariation;
 	private int clickCount;
 
@@ -56,9 +66,12 @@ public class DROVRModule : BaseModule {
 			//...increment the counter
 			this.ButtonCount[buttonColor]++;
 
-
 			//if the user achieve the variable ratio...
 			if(this.targetButton == buttonColor){
+
+				//DRO logic
+				//if the button clicked was the target button
+				this.lastTimeClicked = this.lastTimeUpdate;
 
 				//VR Module logic
 				if(clickCount == randomVariation){
@@ -75,11 +88,6 @@ public class DROVRModule : BaseModule {
 					//increment the click counter
 					this.clickCount++;
 				}
-
-				//DRO logic
-				//reset the timer and start again
-				StopCoroutine("DeliveryPoints");
-				StartCoroutine("DeliveryPoints");
 			}
 
 //			//DRO Logic
@@ -95,6 +103,9 @@ public class DROVRModule : BaseModule {
 	public override void StartModule (){
 
 		this.Score = 0;
+
+		//DRO Module Configuration
+		this.moduleRunning = true;
 		
 		if (this.Report == null)
 			this.Report = new ModuleReport();
@@ -117,13 +128,10 @@ public class DROVRModule : BaseModule {
 		//VR Module Configuration
 		randomVariation = this.generateRandomVR();
 		clickCount = 0;
-
-		//DRO Module Configuration
-		StartCoroutine ("DeliveryPoints");
 	}
 
 	public override void StopModule(){
-		StopCoroutine ("DeliveryPoints");
+		this.moduleRunning = false;
 		//loop through the buttons to sum total cliks
 		foreach(string key in this.ButtonCount.Keys){
 			this.Report.ButtonCount[key] += this.ButtonCount[key];
@@ -133,10 +141,20 @@ public class DROVRModule : BaseModule {
 	//========================================================
 	//Delivery DRODeliveryPoints based on the time interval
 	//========================================================
-	IEnumerator DeliveryPoints(){
-		while (true) {
-			yield return new WaitForSeconds(TimeInterval);
-			this.Score += droPointsToDelivery;
+	private void calculatePoints(){
+		Debug.Log("Last Update: " + this.lastTimeUpdate + " | Time click: " + lastTimeClicked + " | Time interval: " + this.timeInteval);
+		if (this.lastTimeUpdate >= (this.lastTimeClicked + this.timeInteval)) {
+			Debug.Log("True ");
+			this.lastTimeClicked = this.lastTimeUpdate;
+			this.Score += this.droPointsToDelivery;
+		}
+	}
+	
+	public override void UpdateObserverTime (float time)
+	{
+		if(moduleRunning){
+			lastTimeUpdate = time;
+			this.calculatePoints ();
 		}
 	}
 

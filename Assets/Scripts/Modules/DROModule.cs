@@ -28,13 +28,6 @@ public class DROModule : BaseModule {
 		set { targetButton = value; }
 	}
 
-	IEnumerator DeliveryPoints(){
-		while (true) {
-			yield return new WaitForSeconds(TimeInterval);
-			this.Score += this.pointsToDelivery;
-		}
-	}
-
 	public override void StartModule ()
 	{
 		this.Score = 0;
@@ -57,12 +50,10 @@ public class DROModule : BaseModule {
 		this.ButtonCount.Add ("orange", 0);
 		this.ButtonCount.Add ("white", 0);
 		this.moduleRunning = true;
-//		StartCoroutine ("DeliveryPoints");
 	}
 
 	public override void StopModule(){
 		this.moduleRunning = false;
-//		StopCoroutine ("DeliveryPoints");
 		//loop through the buttons to sum total cliks
 		foreach(string key in this.ButtonCount.Keys){
 			this.Report.ButtonCount[key] += this.ButtonCount[key];
@@ -82,9 +73,6 @@ public class DROModule : BaseModule {
 			//if the button clicked was the target button
 			if(color == this.TargetButton){
 				this.lastTimeClicked = this.lastTimeUpdate;
-				//reset the timer and start again
-//				StopCoroutine("DeliveryPoints");
-//				StartCoroutine("DeliveryPoints");
 			}
 		}
 
@@ -92,7 +80,6 @@ public class DROModule : BaseModule {
 	}
 
 	private void calculatePoints(){
-		Debug.Log ("Last time: " + this.lastTimeClicked + " - Click: " + this.lastTimeClicked);
 		if (this.lastTimeUpdate >= (this.lastTimeClicked + this.timeInteval)) {
 			this.lastTimeClicked = this.lastTimeUpdate;
 			this.Score += this.pointsToDelivery;

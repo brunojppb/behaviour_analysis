@@ -2668,6 +2668,7 @@ MonoBehaviour:
   - {fileID: 525198709}
   - {fileID: 926364213}
   - {fileID: 1327223202}
+  actualSessionTime: 0
 --- !u!82 &278675779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16693,11 +16694,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615456588}
---- !u!1 &1626242725
+--- !u!1 &1626242725 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 152898, guid: e74ba45249d51481a9808861a48f570c, type: 2}
   m_PrefabInternal: {fileID: 345902520}
---- !u!224 &1626242730
+--- !u!224 &1626242730 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22452898, guid: e74ba45249d51481a9808861a48f570c,
     type: 2}
