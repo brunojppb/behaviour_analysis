@@ -30,6 +30,13 @@ public class DROVRModule : BaseModule {
 		set {pointsToDelivery = value;}
 	}
 
+	private bool pointFromDRO = false;
+	public bool PointFromDRO {
+		get {return pointFromDRO; }
+		set {pointFromDRO = value;}
+	}
+
+
 	//===========================================
 	//VR Module Variables
 	//===========================================
@@ -76,6 +83,7 @@ public class DROVRModule : BaseModule {
 				//VR Module logic
 				if(clickCount == randomVariation){
 					//... player earns vr delivery points
+					this.PointFromDRO = false;
 					this.Score += this.vrPointsToDelivery;
 					//and the click counter reset
 					this.clickCount = 0;
@@ -89,13 +97,6 @@ public class DROVRModule : BaseModule {
 					this.clickCount++;
 				}
 			}
-
-//			//DRO Logic
-//			if(this.droTargetButton == buttonColor){
-//				//reset the timer and start again
-//				StopCoroutine("DeliveryPoints");
-//				StartCoroutine("DeliveryPoints");
-//			}
 		}
 
 	}
@@ -146,6 +147,7 @@ public class DROVRModule : BaseModule {
 		if (this.lastTimeUpdate >= (this.lastTimeClicked + this.timeInteval)) {
 			Debug.Log("True ");
 			this.lastTimeClicked = this.lastTimeUpdate;
+			this.PointFromDRO = true;
 			this.Score += this.droPointsToDelivery;
 		}
 	}

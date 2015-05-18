@@ -35,11 +35,11 @@ public class BaseModule : MonoBehaviour, IComparable<BaseModule>{
 				//do nothing
 			}
 			else if(value > score){
-				this.observableSession.WriteOnSessionLog("won " + (value - score));
+				this.observableSession.WriteOnSessionLog("won " + (value - score), this);
 				this.report.EarnedPoints += (value - score);
 			}
 			else if (value < score){
-				this.observableSession.WriteOnSessionLog("lost " + (score - value));
+				this.observableSession.WriteOnSessionLog("lost " + (score - value), this);
 				this.report.LostPoints += (score - value);
 			}
 			//update score

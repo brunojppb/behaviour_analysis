@@ -36,6 +36,7 @@ public class SessionManager : MonoBehaviour {
 	[Header("Points Animation")]
 	public GameObject pointAnimation;
 	public GameObject pointsPanel;
+	public GameObject pointAnimationDROVR;
 
 	[Header("Sounds Effects")]
 	//Sounds
@@ -344,19 +345,19 @@ public class SessionManager : MonoBehaviour {
 	void addListener(Button b, BaseModule module){
 	
 		b.onClick.AddListener (() => module.ButtonClicked(b.name));
-		b.onClick.AddListener (() => this.WriteOnSessionLog(b.name));
+		b.onClick.AddListener (() => this.WriteOnSessionLog(b.name, module));
 
 	}
 	
-	public void WriteOnSessionLog(string text){
+	public void WriteOnSessionLog(string text, BaseModule module){
 		//observers called the method sending a message
 		//to update the score and log
 		if (text.Contains ("won")) {
-			updateScore(text);
+			updateScore(text, module);
 			this.sessionLog += text + " point(s) " + "\t\t" + this.actualSessionTime.ToString("0.0") + " s\n";
 		}
 		else if(text.Contains("lost")){
-			updateScore(text);
+			updateScore(text, module);
 			this.sessionLog += text + " point(s) " + "\t" + this.actualSessionTime.ToString("0.0") + " s\n";
 		}
 		//just a button pressed
@@ -367,11 +368,16 @@ public class SessionManager : MonoBehaviour {
 		}
 	}
 
-	private void updateScore(string text){
+	private void updateScore(string text, BaseModule module){
 		//extract the number of points inside the string
 		int points = int.Parse(Regex.Match(text, @"-?\d+").Value);
 		//and update the score
 		int actualScore = int.Parse(this.score.text.ToString ());
+		GameObject scoreLabel = this.pointAnimation;
+		if (module is DROVRModule) {
+			DROVRModule droVR = module as DROVRModule;
+			scoreLabel = droVR.PointFromDRO ? this.pointAnimationDROVR : this.pointAnimation;
+		}
 
 		if (text.Contains ("won")) {
 			actualScore += points;
@@ -381,13 +387,13 @@ public class SessionManager : MonoBehaviour {
 
 			//create a point animation
 			//clone the prefab object and instantiate close to the score UI
-			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+			GameObject clone = Instantiate(scoreLabel) as GameObject;
 			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
 			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
 			//
 			cloneTransform.SetParent(pointsPanelTransform, true);
 			
-			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+			cloneTransform.position = (scoreLabel.GetComponent<RectTransform>() as RectTransform).position;
 			
 			Text pointText = clone.GetComponent<Text>() as Text;
 			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;
@@ -404,14 +410,14 @@ public class SessionManager : MonoBehaviour {
 			//update the total points lost along the session
 			this.lostPoints += points;
 			//create a point animation
-			GameObject clone = Instantiate(this.pointAnimation) as GameObject;
+			GameObject clone = Instantiate(scoreLabel) as GameObject;
 			
 			RectTransform cloneTransform = clone.GetComponent<RectTransform>() as RectTransform;
 			RectTransform pointsPanelTransform = this.pointsPanel.GetComponent<RectTransform>() as RectTransform;
 			
 			cloneTransform.SetParent(pointsPanelTransform, true);
 			
-			cloneTransform.position = (this.pointAnimation.GetComponent<RectTransform>() as RectTransform).position;
+			cloneTransform.position = (scoreLabel.GetComponent<RectTransform>() as RectTransform).position;
 			
 			Text pointText = clone.GetComponent<Text>() as Text;
 			PointsAnimation animationManager = clone.GetComponent<PointsAnimation>() as PointsAnimation;

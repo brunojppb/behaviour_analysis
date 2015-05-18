@@ -2650,6 +2650,7 @@ MonoBehaviour:
   EndOfSessionQuitButton: {fileID: 669794214}
   pointAnimation: {fileID: 1626242725}
   pointsPanel: {fileID: 1045074489}
+  pointAnimationDROVR: {fileID: 476987245}
   buttonClick: {fileID: 278675779}
   getPoint: {fileID: 278675780}
   losePoint: {fileID: 278675781}
@@ -4852,6 +4853,107 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 456896822}
+--- !u!1 &476987245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 152898, guid: e74ba45249d51481a9808861a48f570c, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 476987246}
+  - 222: {fileID: 476987250}
+  - 114: {fileID: 476987249}
+  - 95: {fileID: 476987248}
+  - 114: {fileID: 476987247}
+  m_Layer: 5
+  m_Name: lbl_point_animation_DROVR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &476987246
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22452898, guid: e74ba45249d51481a9808861a48f570c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476987245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: 0}
+  m_Children: []
+  m_Father: {fileID: 2065977991}
+  m_RootOrder: 10
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -137, y: -50}
+  m_SizeDelta: {x: 256.200012, y: 143.099976}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &476987247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11452898, guid: e74ba45249d51481a9808861a48f570c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476987245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d4dccdf5e4742d3a80f43645dd3d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &476987248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9552898, guid: e74ba45249d51481a9808861a48f570c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476987245}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9df0ec073be704fd7834f6f3b5f76239, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &476987249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11452896, guid: e74ba45249d51481a9808861a48f570c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476987245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 75c61c12cc1e74723b998f02ca28d50d, type: 3}
+    m_FontSize: 110
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: +
+--- !u!222 &476987250
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22252898, guid: e74ba45249d51481a9808861a48f570c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 476987245}
 --- !u!1 &489116386
 GameObject:
   m_ObjectHideFlags: 0
@@ -10426,7 +10528,7 @@ RectTransform:
   - {fileID: 1969748777}
   - {fileID: 1626242730}
   m_Father: {fileID: 2065977991}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 182.399994, y: -50.5}
@@ -21282,6 +21384,7 @@ RectTransform:
   - {fileID: 926364212}
   - {fileID: 1327223201}
   - {fileID: 1424868679}
+  - {fileID: 476987246}
   - {fileID: 1045074490}
   m_Father: {fileID: 790487260}
   m_RootOrder: 2
