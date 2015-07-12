@@ -29,6 +29,12 @@ public class ExtinctionModule : BaseModule {
 	}
 
 	public override void StopModule (){ 
+
+		//loop through the buttons to sum total cliks
+		foreach(string key in this.ButtonCount.Keys){
+			this.Report.ButtonCount[key] += this.ButtonCount[key];
+		}
+
 	}
 
 	public override void OutputData (string filename){

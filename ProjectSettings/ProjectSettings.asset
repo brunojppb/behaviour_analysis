@@ -26,7 +26,7 @@ PlayerSettings:
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_MobileMTRendering: 0
-  m_UseDX11: 1
+  m_UseDX11: 0
   m_Stereoscopic3D: 0
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
@@ -39,7 +39,7 @@ PlayerSettings:
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
-  defaultIsFullScreen: 1
+  defaultIsFullScreen: 0
   defaultIsNativeResolution: 0
   runInBackground: 0
   captureSingleScreen: 0
@@ -133,13 +133,33 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: b348285c31af2460da50e976b2608f8e,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 0}
       m_Size: 128
-  m_BuildTargetBatching: []
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: b348285c31af2460da50e976b2608f8e, type: 3}
+      m_Size: 1024
+    - m_Icon: {fileID: 0}
+      m_Size: 512
+    - m_Icon: {fileID: 0}
+      m_Size: 256
+    - m_Icon: {fileID: 0}
+      m_Size: 128
+    - m_Icon: {fileID: 0}
+      m_Size: 48
+    - m_Icon: {fileID: 0}
+      m_Size: 32
+    - m_Icon: {fileID: 0}
+      m_Size: 16
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   actionOnDotNetUnhandledException: 1
