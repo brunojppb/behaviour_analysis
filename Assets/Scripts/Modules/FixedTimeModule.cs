@@ -17,12 +17,16 @@ public class FixedTimeModule : BaseModule {
 		set {pointsToDelivery = value;}
 	}
 
-	//Delive points avery timeInterval (seconds)
+	//Delive points every timeInterval (seconds)
 	IEnumerator DeliveryPoints(){
 		while (true) {
 			yield return new WaitForSeconds(TimeInterval);
 			this.Score += this.pointsToDelivery;
 		}
+	}
+
+	private void RepeatPoints() {
+		this.Score += this.pointsToDelivery;
 	}
 
 	//================================================================
@@ -50,10 +54,12 @@ public class FixedTimeModule : BaseModule {
 		this.ButtonCount.Add ("orange", 0);
 		this.ButtonCount.Add ("white", 0);
 
-		StartCoroutine("DeliveryPoints");
+//		StartCoroutine("DeliveryPoints");
+//		InvokeRepeating ("RepeatPoints", TimeInterval, TimeInterval+1);
 	}
 	public override void StopModule (){ 
-		StopCoroutine ("DeliveryPoints");
+//		StopCoroutine ("DeliveryPoints");
+//		CancelInvoke ("RepeatPoints");
 
 		//loop through the buttons to sum total cliks
 		foreach(string key in this.ButtonCount.Keys){
@@ -70,9 +76,9 @@ public class FixedTimeModule : BaseModule {
 		text += "\n=================================================\n";
 		text += "Time Interval: " + this.timeInteval;
 		text += "\nExecution Time: " + timeInMinutes + " minutes";
-		text += "\nEarned Points: " + this.Report.EarnedPoints;
-		text += "\nLost Points: " + this.Report.LostPoints;
-		text += "\nScore: " + this.Score;
+//		text += "\nEarned Points: " + this.Report.EarnedPoints;
+//		text += "\nLost Points: " + this.Report.LostPoints;
+//		text += "\nScore: " + this.Score;
 		// The using statement automatically closes the stream and calls  
 		// IDisposable.Dispose on the stream object. 
 		using (StreamWriter file = new StreamWriter (filename, true)) {

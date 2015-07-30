@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 
 public class SessionManager : MonoBehaviour {
 
+	BaseModule actualModule;
+
 	//PANEL MODULES
 	[Header("Module Managers")]
 	public PanelVariableRatioManager variableRatioManager;
@@ -264,19 +266,20 @@ public class SessionManager : MonoBehaviour {
 		// Iterate through the number of loops the 
 		// user had setup on the main screen
 		for (int i = 0; i < numberOfLoops; i++) {
+//			this.elapsedFixedTimes = new List<float> ();
 			// Start a Coroutine to decrement the session time and generate a log.
 			// This coroutine manage the session time of each loop
-			StopCoroutine("SessionTimer");
-			StartCoroutine ("SessionTimer");
 			this.sessionLog += "\n\n\n=================================================\n";
 			this.sessionLog += string.Format("LOOP {0}:", (i+1));
 			this.sessionLog += "\n==================================================\n\n";
 			int moduleIndex = 0;
+			StopCoroutine("SessionTimer");
+			StartCoroutine ("SessionTimer");
 
 			while (moduleIndex < this.modules.Count) {
-				BaseModule actualModule = modules[moduleIndex];
-				Debug.Log("Module " + actualModule.ToString() + " Running...");
-				Debug.Log("Exec Time: " + actualModule.ExecutionTime);
+				actualModule = modules[moduleIndex];
+//				Debug.Log("Module " + actualModule.ToString() + " Running...");
+//				Debug.Log("Exec Time: " + actualModule.ExecutionTime);
 				
 				//start specialized functions for each module
 				actualModule.StartModule();
@@ -303,6 +306,9 @@ public class SessionManager : MonoBehaviour {
 				//jump to next module
 				moduleIndex++;
 			}
+
+			// Stop Session Timer
+			StopCoroutine("SessionTimer");
 
 			//write on the file the results
 			//write loop information on file
@@ -333,9 +339,24 @@ public class SessionManager : MonoBehaviour {
 	//===================================================================
 	IEnumerator SessionTimer(){
 		ActualSessionTime = 0.0f;
+		List<int> pastPoints = new List<int> ();
 		while (ActualSessionTime <= this.sessionTime) {
 			yield return new WaitForSeconds(0.1f);
 			ActualSessionTime += 0.1f;
+			// Delivery FixedTime Points
+			if ((this.actualModule != null) && (this.actualModule is FixedTimeModule)) {
+				FixedTimeModule cast = this.actualModule as FixedTimeModule;
+				int time = (int)actualSessionTime;
+				int pointsTime = cast.TimeInterval;
+				Debug.Log((int)time + " % "  + pointsTime + " = " + (float)time % (float)pointsTime);
+				bool isMultiple = (float)time % (float)pointsTime == 0.0 ? true : false;
+//				Debug.Log("Time: " + time);
+//				Debug.Log("Reminder: " + time % pointsTime);
+				if ((ActualSessionTime > cast.TimeInterval) && isMultiple && !pastPoints.Contains(time)) {
+					pastPoints.Add(time);
+					this.WriteOnSessionLog("won " + cast.PointsToDelivery, this.actualModule);
+				}
+			}
 			
 		}
 	}
@@ -534,7 +555,9 @@ public class SessionManager : MonoBehaviour {
 		this.dismissButtonScreen ();
 
 	}
+
 }	
+
 
 
 
